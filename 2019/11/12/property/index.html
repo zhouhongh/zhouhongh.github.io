@@ -51,17 +51,18 @@
   };
 </script>
 
-  <meta name="description" content="Welcome to my blog!">
+  <meta name="description" content="@property是类方法的一个装饰器。 参考网址：https:&#x2F;&#x2F;www.liaoxuefeng.com&#x2F;wiki&#x2F;1016959663602400&#x2F;1017502538658208">
+<meta name="keywords" content="python">
 <meta property="og:type" content="article">
-<meta property="og:title" content="welcome">
-<meta property="og:url" content="https:&#x2F;&#x2F;zhouhongh.github.io&#x2F;2019&#x2F;11&#x2F;01&#x2F;welcome&#x2F;index.html">
+<meta property="og:title" content="@property">
+<meta property="og:url" content="https:&#x2F;&#x2F;zhouhongh.github.io&#x2F;2019&#x2F;11&#x2F;12&#x2F;property&#x2F;index.html">
 <meta property="og:site_name" content="zhouhongh&#39;s blog">
-<meta property="og:description" content="Welcome to my blog!">
+<meta property="og:description" content="@property是类方法的一个装饰器。 参考网址：https:&#x2F;&#x2F;www.liaoxuefeng.com&#x2F;wiki&#x2F;1016959663602400&#x2F;1017502538658208">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-11-06T01:46:47.866Z">
+<meta property="og:updated_time" content="2019-11-12T07:51:32.535Z">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://zhouhongh.github.io/2019/11/01/welcome/">
+<link rel="canonical" href="https://zhouhongh.github.io/2019/11/12/property/">
 
 
 <script id="page-configurations">
@@ -75,7 +76,7 @@
   };
 </script>
 
-  <title>welcome | zhouhongh's blog</title>
+  <title>@property | zhouhongh's blog</title>
   
 
 
@@ -190,7 +191,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://zhouhongh.github.io/2019/11/01/welcome/">
+    <link itemprop="mainEntityOfPage" href="https://zhouhongh.github.io/2019/11/12/property/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -203,7 +204,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          welcome
+          @property
         </h1>
 
         <div class="post-meta">
@@ -212,16 +213,21 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2019-11-01 11:53:43" itemprop="dateCreated datePublished" datetime="2019-11-01T11:53:43+08:00">2019-11-01</time>
+              <time title="创建时间：2019-11-12 15:43:57 / 修改时间：15:51:32" itemprop="dateCreated datePublished" datetime="2019-11-12T15:43:57+08:00">2019-11-12</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-11-06 09:46:47" itemprop="dateModified" datetime="2019-11-06T09:46:47+08:00">2019-11-06</time>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
               </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">python</span>
+                  </a>
+                </span>
+            </span>
 
           
 
@@ -234,7 +240,21 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>Welcome to my blog!</p>
+        <p><code>@property</code>是类方法的一个装饰器。</p>
+<p>参考网址：<a href="https://www.liaoxuefeng.com/wiki/1016959663602400/1017502538658208" target="_blank" rel="noopener">https://www.liaoxuefeng.com/wiki/1016959663602400/1017502538658208</a></p>
+<a id="more"></a>
+
+<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span><span class="params">(object)</span>:</span></span><br><span class="line"></span><br><span class="line"><span class="meta">    @property</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">score</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self._score</span><br><span class="line"></span><br><span class="line"><span class="meta">    @score.setter</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">score</span><span class="params">(self, value)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> isinstance(value, int):</span><br><span class="line">            <span class="keyword">raise</span> ValueError(<span class="string">'score must be an integer!'</span>)</span><br><span class="line">        <span class="keyword">if</span> value &lt; <span class="number">0</span> <span class="keyword">or</span> value &gt; <span class="number">100</span>:</span><br><span class="line">            <span class="keyword">raise</span> ValueError(<span class="string">'score must between 0 ~ 100!'</span>)</span><br><span class="line">        self._score = value</span><br></pre></td></tr></table></figure>
+
+<p>把一个getter方法变成属性，只需要加上<code>@property</code>就可以了，此时，<code>@property</code>本身又创建了另一个装饰器<code>@score.setter</code>，负责把一个setter方法变成属性赋值，于是，我们就拥有一个可控的属性操作：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; s = Student()</span><br><span class="line">&gt;&gt;&gt; s.score = 60 <span class="comment"># OK，实际转化为s.set_score(60)</span></span><br><span class="line">&gt;&gt;&gt; s.score <span class="comment"># OK，实际转化为s.get_score()</span></span><br><span class="line">60</span><br><span class="line">&gt;&gt;&gt; s.score = 9999</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  ...</span><br><span class="line">ValueError: score must between 0 ~ 100!</span><br></pre></td></tr></table></figure>
+
+<p>注意到这个神奇的<code>@property</code>，我们在对实例属性操作的时候，就知道该属性很可能不是直接暴露的，而是通过getter和setter方法来实现的。</p>
+<p>还可以定义只读属性，只定义getter方法，不定义setter方法就是一个只读属性：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span><span class="params">(object)</span>:</span></span><br><span class="line"></span><br><span class="line"><span class="meta">    @property</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">birth</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self._birth</span><br><span class="line"></span><br><span class="line"><span class="meta">    @birth.setter</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">birth</span><span class="params">(self, value)</span>:</span></span><br><span class="line">        self._birth = value</span><br><span class="line"></span><br><span class="line"><span class="meta">    @property</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">age</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> <span class="number">2015</span> - self._birth</span><br></pre></td></tr></table></figure>
+
+<p>上面的<code>birth</code>是可读写属性，而<code>age</code>就是一个只读属性，因为<code>age</code>可以根据<code>birth</code>和当前时间计算出来。</p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p><code>@property</code>广泛应用在类的定义中，可以让调用者写出简短的代码，同时保证对参数进行必要的检查，这样，程序运行时就减少了出错的可能性。</p>
 
     </div>
 
@@ -243,21 +263,24 @@
     
 
       <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/python/" rel="tag"># python</a>
+          </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
-                <a href="/2019/10/31/hello-world/" rel="next" title="Hello World">
-                  <i class="fa fa-chevron-left"></i> Hello World
+                <a href="/2019/11/12/shell-commands/" rel="next" title="shell_commands">
+                  <i class="fa fa-chevron-left"></i> shell_commands
                 </a>
             </div>
 
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
-                <a href="/2019/11/02/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E8%AE%B0%E5%BD%95/" rel="prev" title="个人博客搭建记录">
-                  个人博客搭建记录 <i class="fa fa-chevron-right"></i>
+                <a href="/2019/11/12/configparser/" rel="prev" title="configparser">
+                  configparser <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>
@@ -297,6 +320,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#例子"><span class="nav-number">1.</span> <span class="nav-text">例子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小结"><span class="nav-number">2.</span> <span class="nav-text">小结</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

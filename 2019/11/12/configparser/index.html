@@ -51,17 +51,18 @@
   };
 </script>
 
-  <meta name="description" content="Welcome to my blog!">
+  <meta name="description" content="configparser是python自带的用来读取配置文件的包。本文记录其读取命令。 参考网址：https:&#x2F;&#x2F;www.cnblogs.com&#x2F;ming5218&#x2F;p&#x2F;7965973.html">
+<meta name="keywords" content="python">
 <meta property="og:type" content="article">
-<meta property="og:title" content="welcome">
-<meta property="og:url" content="https:&#x2F;&#x2F;zhouhongh.github.io&#x2F;2019&#x2F;11&#x2F;01&#x2F;welcome&#x2F;index.html">
+<meta property="og:title" content="configparser">
+<meta property="og:url" content="https:&#x2F;&#x2F;zhouhongh.github.io&#x2F;2019&#x2F;11&#x2F;12&#x2F;configparser&#x2F;index.html">
 <meta property="og:site_name" content="zhouhongh&#39;s blog">
-<meta property="og:description" content="Welcome to my blog!">
+<meta property="og:description" content="configparser是python自带的用来读取配置文件的包。本文记录其读取命令。 参考网址：https:&#x2F;&#x2F;www.cnblogs.com&#x2F;ming5218&#x2F;p&#x2F;7965973.html">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-11-06T01:46:47.866Z">
+<meta property="og:updated_time" content="2019-11-12T08:16:00.173Z">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://zhouhongh.github.io/2019/11/01/welcome/">
+<link rel="canonical" href="https://zhouhongh.github.io/2019/11/12/configparser/">
 
 
 <script id="page-configurations">
@@ -75,7 +76,7 @@
   };
 </script>
 
-  <title>welcome | zhouhongh's blog</title>
+  <title>configparser | zhouhongh's blog</title>
   
 
 
@@ -190,7 +191,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://zhouhongh.github.io/2019/11/01/welcome/">
+    <link itemprop="mainEntityOfPage" href="https://zhouhongh.github.io/2019/11/12/configparser/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -203,7 +204,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          welcome
+          configparser
         </h1>
 
         <div class="post-meta">
@@ -212,16 +213,21 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2019-11-01 11:53:43" itemprop="dateCreated datePublished" datetime="2019-11-01T11:53:43+08:00">2019-11-01</time>
+              <time title="创建时间：2019-11-12 16:00:30 / 修改时间：16:16:00" itemprop="dateCreated datePublished" datetime="2019-11-12T16:00:30+08:00">2019-11-12</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-11-06 09:46:47" itemprop="dateModified" datetime="2019-11-06T09:46:47+08:00">2019-11-06</time>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
               </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">python</span>
+                  </a>
+                </span>
+            </span>
 
           
 
@@ -234,7 +240,25 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>Welcome to my blog!</p>
+        <p><code>configparser</code>是python自带的用来读取配置文件的包。本文记录其读取命令。</p>
+<p>参考网址：<a href="https://www.cnblogs.com/ming5218/p/7965973.html" target="_blank" rel="noopener">https://www.cnblogs.com/ming5218/p/7965973.html</a></p>
+<a id="more"></a>
+
+<h2 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h2><p>配置文件格式如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[db]</span><br><span class="line">db_host = <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span></span><br><span class="line">db_port = <span class="number">69</span></span><br><span class="line">db_user = root</span><br><span class="line">db_pass = root</span><br><span class="line">host_port = <span class="number">69</span></span><br><span class="line"></span><br><span class="line">[concurrent]</span><br><span class="line">thread = <span class="number">10</span></span><br><span class="line">processor = <span class="number">20</span></span><br></pre></td></tr></table></figure>
+
+<p>括号“[ ]”内包含的为<code>section</code>。紧接着section的为类似于key-value 的<code>options</code> 的配置内容。</p>
+<h2 id="读"><a href="#读" class="headerlink" title="读"></a>读</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> configparser</span><br><span class="line">config = configparser.ConfigParser()</span><br><span class="line">config.read(<span class="string">"ini"</span>, encoding=<span class="string">"utf-8"</span>)</span><br></pre></td></tr></table></figure>
+
+<p>ini是配置文件。通常取名为config.cfg</p>
+<h2 id="取"><a href="#取" class="headerlink" title="取"></a>取</h2><h3 id="获取section节点"><a href="#获取section节点" class="headerlink" title="获取section节点"></a>获取section节点</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 获取所用的section节点</span></span><br><span class="line"><span class="keyword">import</span> configparser</span><br><span class="line">config = configparser.ConfigParser()</span><br><span class="line">config.read(<span class="string">"ini"</span>, encoding=<span class="string">"utf-8"</span>)</span><br><span class="line">print(config.sections())</span><br><span class="line"><span class="comment">#运行结果</span></span><br><span class="line"><span class="comment"># ['db', 'concurrent']</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="获取section的options"><a href="#获取section的options" class="headerlink" title="获取section的options"></a>获取section的options</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">r = config.options(<span class="string">"db"</span>)</span><br><span class="line">print(r)</span><br><span class="line"><span class="comment">#运行结果</span></span><br><span class="line"><span class="comment"># ['db_host', 'db_port', 'db_user', 'db_pass', 'host_port']</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="获取指定section下的指定option的值"><a href="#获取指定section下的指定option的值" class="headerlink" title="获取指定section下的指定option的值"></a>获取指定section下的指定option的值</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">r = config.get(<span class="string">"db"</span>, <span class="string">"db_host"</span>)</span><br><span class="line"><span class="comment"># r1 = config.getint("db", "k1") #将获取到值转换为int型</span></span><br><span class="line"><span class="comment"># r2 = config.getboolean("db", "k2" ) #将获取到值转换为bool型</span></span><br><span class="line"><span class="comment"># r3 = config.getfloat("db", "k3" ) #将获取到值转换为浮点型</span></span><br><span class="line">print(r)</span><br><span class="line"><span class="comment">#运行结果</span></span><br><span class="line"><span class="comment"># 127.0.0.1</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="获取指定section的所有配置信息（key-value）"><a href="#获取指定section的所有配置信息（key-value）" class="headerlink" title="获取指定section的所有配置信息（key-value）"></a>获取指定section的所有配置信息（key-value）</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">r = config.items(<span class="string">"db"</span>)</span><br><span class="line">print(r)</span><br><span class="line"><span class="comment">#运行结果</span></span><br><span class="line"><span class="comment">#[('db_host', '127.0.0.1'), ('db_port', '69'), ('db_user', 'root'), ('db_pass', 'root'), ('host_port', '69')]</span></span><br></pre></td></tr></table></figure>
+
 
     </div>
 
@@ -243,21 +267,24 @@
     
 
       <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/python/" rel="tag"># python</a>
+          </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
-                <a href="/2019/10/31/hello-world/" rel="next" title="Hello World">
-                  <i class="fa fa-chevron-left"></i> Hello World
+                <a href="/2019/11/12/property/" rel="next" title="@property">
+                  <i class="fa fa-chevron-left"></i> @property
                 </a>
             </div>
 
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
-                <a href="/2019/11/02/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E8%AE%B0%E5%BD%95/" rel="prev" title="个人博客搭建记录">
-                  个人博客搭建记录 <i class="fa fa-chevron-right"></i>
+                <a href="/2019/11/12/argparse/" rel="prev" title="argparse">
+                  argparse <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>
@@ -297,6 +324,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#配置文件"><span class="nav-number">1.</span> <span class="nav-text">配置文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#读"><span class="nav-number">2.</span> <span class="nav-text">读</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#取"><span class="nav-number">3.</span> <span class="nav-text">取</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#获取section节点"><span class="nav-number">3.1.</span> <span class="nav-text">获取section节点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取section的options"><span class="nav-number">3.2.</span> <span class="nav-text">获取section的options</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取指定section下的指定option的值"><span class="nav-number">3.3.</span> <span class="nav-text">获取指定section下的指定option的值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取指定section的所有配置信息（key-value）"><span class="nav-number">3.4.</span> <span class="nav-text">获取指定section的所有配置信息（key-value）</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
