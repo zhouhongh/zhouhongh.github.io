@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="alternate" href="/atom.xml" title="zhouhongh's blog" type="application/atom+xml">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.5.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="整段缩进123456\usepackage&amp;#123;changepage&amp;#125;\begin&amp;#123;adjustwidth&amp;#125;&amp;#123;2em&amp;#125;&amp;#123;0em&amp;#125;- 如何通过合并估算的数据来缓解基于奇异值分解方法的数据稀疏性?\\	- 如何生成有效的输入数据?\\- 合并估算数据的SVD模型能否提高推荐质量?\\\end&amp;#123;adjustwidth&amp;">
+<meta name="keywords" content="工具">
+<meta property="og:type" content="article">
+<meta property="og:title" content="latex语法记录">
+<meta property="og:url" content="https:&#x2F;&#x2F;zhouhongh.github.io&#x2F;2020&#x2F;02&#x2F;11&#x2F;latex%E8%AF%AD%E6%B3%95%E8%AE%B0%E5%BD%95&#x2F;index.html">
+<meta property="og:site_name" content="zhouhongh&#39;s blog">
+<meta property="og:description" content="整段缩进123456\usepackage&amp;#123;changepage&amp;#125;\begin&amp;#123;adjustwidth&amp;#125;&amp;#123;2em&amp;#125;&amp;#123;0em&amp;#125;- 如何通过合并估算的数据来缓解基于奇异值分解方法的数据稀疏性?\\	- 如何生成有效的输入数据?\\- 合并估算数据的SVD模型能否提高推荐质量?\\\end&amp;#123;adjustwidth&amp;">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-02-11T07:07:59.028Z">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://zhouhongh.github.io/2020/02/11/latex%E8%AF%AD%E6%B3%95%E8%AE%B0%E5%BD%95/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>latex语法记录 | zhouhongh's blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">zhouhongh's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">记录成长的足迹</p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://zhouhongh.github.io/2020/02/11/latex%E8%AF%AD%E6%B3%95%E8%AE%B0%E5%BD%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="zhouhongh">
+      <meta itemprop="description" content="历尽千帆，仍是少年">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zhouhongh's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          latex语法记录
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-02-11 15:03:40 / 修改时间：15:07:59" itemprop="dateCreated datePublished" datetime="2020-02-11T15:03:40+08:00">2020-02-11</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/skills/" itemprop="url" rel="index">
+                    <span itemprop="name">skills</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="整段缩进"><a href="#整段缩进" class="headerlink" title="整段缩进"></a>整段缩进</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">\usepackage&#123;changepage&#125;</span><br><span class="line">\begin&#123;adjustwidth&#125;&#123;2em&#125;&#123;0em&#125;</span><br><span class="line">- 如何通过合并估算的数据来缓解基于奇异值分解方法的数据稀疏性?\\	</span><br><span class="line">- 如何生成有效的输入数据?\\</span><br><span class="line">- 合并估算数据的SVD模型能否提高推荐质量?\\</span><br><span class="line">\end&#123;adjustwidth&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h2><p><a href="https://www.cnblogs.com/ahhylau/p/4586167.html" target="_blank" rel="noopener">https://www.cnblogs.com/ahhylau/p/4586167.html</a></p>
+<h2 id="插入算法"><a href="#插入算法" class="headerlink" title="插入算法"></a>插入算法</h2><p><a href="https://blog.csdn.net/zzp_403184692/article/details/48712385" target="_blank" rel="noopener">https://blog.csdn.net/zzp_403184692/article/details/48712385</a></p>
+<h2 id="标签"><a href="#标签" class="headerlink" title="标签"></a>标签</h2><p><a href="https://blog.csdn.net/zhazhazl/article/details/52783172" target="_blank" rel="noopener">LATEX(1)设置图、表、公式标签方便上下文引用</a></p>
+<p>简而言之：<code>\label{}</code>加标签，<code>\ref{}</code>引用标签，显示结果是序号。</p>
+<h2 id="公式换行对齐"><a href="#公式换行对齐" class="headerlink" title="公式换行对齐"></a>公式换行对齐</h2><p><a href="https://blog.csdn.net/hyluglare/article/details/89215541" target="_blank" rel="noopener">https://blog.csdn.net/hyluglare/article/details/89215541</a></p>
+<h2 id="引用文献出问号"><a href="#引用文献出问号" class="headerlink" title="引用文献出问号"></a>引用文献出问号</h2><p>使用texlive commandline 切换到项目目录，然后执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">pdflatex test #使用pdflatex compile，test替换为文件名</span><br><span class="line"> </span><br><span class="line">bibtex test #使用bibtex compile</span><br><span class="line"> </span><br><span class="line">pdflatex test</span><br><span class="line"> </span><br><span class="line">pdflatex test</span><br></pre></td></tr></table></figure>
+<h2 id="超链接"><a href="#超链接" class="headerlink" title="超链接"></a>超链接</h2><p><a href="https://blog.csdn.net/mnshenyanping/article/details/50382626" target="_blank" rel="noopener">latex参考文献为网址</a></p>
+<h2 id="表格、图片位置控制"><a href="#表格、图片位置控制" class="headerlink" title="表格、图片位置控制"></a>表格、图片位置控制</h2><p>\begin{table}[htbp]<br>h:放在此处<br>t:放在顶端<br>b:放在底端<br>p:在本页</p>
+<h2 id="不需要标号的章节名"><a href="#不需要标号的章节名" class="headerlink" title="不需要标号的章节名"></a>不需要标号的章节名</h2><p>加<code>*</code>即可：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">\section*&#123;致谢&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="只在部分列隔断表格"><a href="#只在部分列隔断表格" class="headerlink" title="只在部分列隔断表格"></a>只在部分列隔断表格</h2><p>\cmidrule(l){3-11}</p>
+<h2 id="多行合并"><a href="#多行合并" class="headerlink" title="多行合并"></a>多行合并</h2><p>\multirow{8}{*}{name}</p>
+<p>例子</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">\begin&#123;table*&#125;[ht]  </span><br><span class="line">	\centering </span><br><span class="line">	\caption&#123;性能比较(MovieLens 100k)&#125; </span><br><span class="line">	\begin&#123;tabularx&#125;&#123;17cm&#125;&#123;lllllllllll&#125;</span><br><span class="line">		\hline  </span><br><span class="line">		数据集                     &amp; 维度                   &amp; 方法  &amp; UserWise &amp; ItemWise &amp; EMDP  &amp; RSVD   &amp; SR     &amp; ISVD-I                  &amp; ISVD                    &amp; ISR\\  </span><br><span class="line">		\hline  </span><br><span class="line">		\multirow&#123;8&#125;&#123;*&#125;&#123;ISVD\_U&#125;   &amp;\multirow&#123;4&#125;&#123;*&#125;&#123;10D&#125;   &amp;MAE    &amp;0.9490    &amp;0.9447    &amp;0.8093 &amp; 0.7572 &amp; 0.7466 &amp; \multirow&#123;2&#125;&#123;*&#125;&#123;0.8388&#125; &amp; \multirow&#123;2&#125;&#123;*&#125;&#123;0.6470&#125; &amp; \multirow&#123;2&#125;&#123;*&#125;&#123;0.6423&#125;\\  </span><br><span class="line">	                          	   &amp;                       &amp;提升   &amp;31.82\%   &amp;31.53\%   &amp;20.05\% &amp; 14.55\% &amp;13.34\% &amp; &amp; &amp;  \\ \cmidrule(l)&#123;3-11&#125;  </span><br><span class="line">		                           &amp;                       &amp;RMSE   &amp;1.1355    &amp;1.1257    &amp;1.0116 &amp; 0.9646 &amp; 0.9518 &amp; \multirow&#123;2&#125;&#123;*&#125;&#123;1.0952&#125; &amp; \multirow&#123;2&#125;&#123;*&#125;&#123;0.8247&#125; &amp; \multirow&#123;2&#125;&#123;*&#125;&#123;0.8244&#125;\\ </span><br><span class="line">		                           &amp;                       &amp;提升   &amp;27.37\%   &amp;26.74\%   &amp;18.48\% &amp; 14.50\% &amp;13.35\% &amp; &amp; &amp;  \\ \cmidrule(l)&#123;2-11&#125;</span><br><span class="line">                                   &amp;\multirow&#123;4&#125;&#123;*&#125;&#123;10D&#125;   &amp;MAE    &amp;0.9490    &amp;0.9447    &amp;0.8093 &amp; 0.7519 &amp; 0.7526 &amp; \multirow&#123;2&#125;&#123;*&#125;&#123;0.8388&#125; &amp; \multirow&#123;2&#125;&#123;*&#125;&#123;0.4778&#125; &amp; \multirow&#123;2&#125;&#123;*&#125;&#123;0.4930&#125;\\  </span><br><span class="line">                                   &amp;                       &amp;提升   &amp;49.65\%   &amp;49.42\%   &amp;40.96\% &amp; 36.45\% &amp;36.51\% &amp; &amp; &amp;  \\ \cmidrule(l)&#123;3-11&#125;  </span><br><span class="line">                                   &amp;                       &amp;RMSE   &amp;1.1355    &amp;1.1257    &amp;1.0116 &amp; 0.9643 &amp; 0.9644 &amp; \multirow&#123;2&#125;&#123;*&#125;&#123;1.0952&#125; &amp; \multirow&#123;2&#125;&#123;*&#125;&#123;0.6132&#125; &amp; \multirow&#123;2&#125;&#123;*&#125;&#123;0.6313&#125;\\ </span><br><span class="line">                                   &amp;                       &amp;提升   &amp;46.00\%   &amp;45.53\%   &amp;39.38\% &amp; 36.41\% &amp;36.42\% &amp; &amp; &amp;  \\ </span><br><span class="line">		\hline  </span><br><span class="line">	\end&#123;tabularx&#125;  </span><br><span class="line">\end&#123;table*&#125;S</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%B7%A5%E5%85%B7/" rel="tag"># 工具</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/2020/02/11/wget%E4%B8%8B%E8%BD%BD%E9%9C%80%E7%99%BB%E5%BD%95%E7%9A%84%E7%BD%91%E9%A1%B5%E4%B8%AD%E7%9A%84%E6%96%87%E4%BB%B6-%E4%BD%BF%E7%94%A8cookie/" rel="next" title="wget下载需登录的网页中的文件(使用cookie)">
+                  <i class="fa fa-chevron-left"></i> wget下载需登录的网页中的文件(使用cookie)
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#整段缩进"><span class="nav-number">1.</span> <span class="nav-text">整段缩进</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#列表"><span class="nav-number">2.</span> <span class="nav-text">列表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#插入算法"><span class="nav-number">3.</span> <span class="nav-text">插入算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#标签"><span class="nav-number">4.</span> <span class="nav-text">标签</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#公式换行对齐"><span class="nav-number">5.</span> <span class="nav-text">公式换行对齐</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用文献出问号"><span class="nav-number">6.</span> <span class="nav-text">引用文献出问号</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#超链接"><span class="nav-number">7.</span> <span class="nav-text">超链接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#表格、图片位置控制"><span class="nav-number">8.</span> <span class="nav-text">表格、图片位置控制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#不需要标号的章节名"><span class="nav-number">9.</span> <span class="nav-text">不需要标号的章节名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#只在部分列隔断表格"><span class="nav-number">10.</span> <span class="nav-text">只在部分列隔断表格</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多行合并"><span class="nav-number">11.</span> <span class="nav-text">多行合并</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="zhouhongh"
+    src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">zhouhongh</p>
+  <div class="site-description" itemprop="description">历尽千帆，仍是少年</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">14</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="feed-link motion-element">
+    <a href="/atom.xml" rel="alternate">
+      <i class="fa fa-rss"></i>RSS
+    </a>
+  </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/zhouhongh" title="GitHub &amp;rarr; https:&#x2F;&#x2F;github.com&#x2F;zhouhongh" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/zhh_hhz" title="CSDN &amp;rarr; https:&#x2F;&#x2F;blog.csdn.net&#x2F;zhh_hhz" rel="noopener" target="_blank"><i class="fa fa-fw fa-crosshairs"></i>CSDN</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zhouhongh</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.0.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.5.0
+  </div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

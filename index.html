@@ -189,6 +189,193 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://zhouhongh.github.io/2020/02/11/latex%E8%AF%AD%E6%B3%95%E8%AE%B0%E5%BD%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="zhouhongh">
+      <meta itemprop="description" content="历尽千帆，仍是少年">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zhouhongh's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/02/11/latex%E8%AF%AD%E6%B3%95%E8%AE%B0%E5%BD%95/" class="post-title-link" itemprop="url">latex语法记录</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-02-11 15:03:40 / 修改时间：15:07:59" itemprop="dateCreated datePublished" datetime="2020-02-11T15:03:40+08:00">2020-02-11</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/skills/" itemprop="url" rel="index">
+                    <span itemprop="name">skills</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="整段缩进"><a href="#整段缩进" class="headerlink" title="整段缩进"></a>整段缩进</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">\usepackage&#123;changepage&#125;</span><br><span class="line">\begin&#123;adjustwidth&#125;&#123;2em&#125;&#123;0em&#125;</span><br><span class="line">- 如何通过合并估算的数据来缓解基于奇异值分解方法的数据稀疏性?\\	</span><br><span class="line">- 如何生成有效的输入数据?\\</span><br><span class="line">- 合并估算数据的SVD模型能否提高推荐质量?\\</span><br><span class="line">\end&#123;adjustwidth&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h2><p><a href="https://www.cnblogs.com/ahhylau/p/4586167.html" target="_blank" rel="noopener">https://www.cnblogs.com/ahhylau/p/4586167.html</a></p>
+<h2 id="插入算法"><a href="#插入算法" class="headerlink" title="插入算法"></a>插入算法</h2><p><a href="https://blog.csdn.net/zzp_403184692/article/details/48712385" target="_blank" rel="noopener">https://blog.csdn.net/zzp_403184692/article/details/48712385</a></p>
+<h2 id="标签"><a href="#标签" class="headerlink" title="标签"></a>标签</h2><p><a href="https://blog.csdn.net/zhazhazl/article/details/52783172" target="_blank" rel="noopener">LATEX(1)设置图、表、公式标签方便上下文引用</a></p>
+<p>简而言之：<code>\label{}</code>加标签，<code>\ref{}</code>引用标签，显示结果是序号。</p>
+<h2 id="公式换行对齐"><a href="#公式换行对齐" class="headerlink" title="公式换行对齐"></a>公式换行对齐</h2><p><a href="https://blog.csdn.net/hyluglare/article/details/89215541" target="_blank" rel="noopener">https://blog.csdn.net/hyluglare/article/details/89215541</a></p>
+<h2 id="引用文献出问号"><a href="#引用文献出问号" class="headerlink" title="引用文献出问号"></a>引用文献出问号</h2><p>使用texlive commandline 切换到项目目录，然后执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">pdflatex test #使用pdflatex compile，test替换为文件名</span><br><span class="line"> </span><br><span class="line">bibtex test #使用bibtex compile</span><br><span class="line"> </span><br><span class="line">pdflatex test</span><br><span class="line"> </span><br><span class="line">pdflatex test</span><br></pre></td></tr></table></figure>
+<h2 id="超链接"><a href="#超链接" class="headerlink" title="超链接"></a>超链接</h2><p><a href="https://blog.csdn.net/mnshenyanping/article/details/50382626" target="_blank" rel="noopener">latex参考文献为网址</a></p>
+<h2 id="表格、图片位置控制"><a href="#表格、图片位置控制" class="headerlink" title="表格、图片位置控制"></a>表格、图片位置控制</h2><p>\begin{table}[htbp]<br>h:放在此处<br>t:放在顶端<br>b:放在底端<br>p:在本页</p>
+<h2 id="不需要标号的章节名"><a href="#不需要标号的章节名" class="headerlink" title="不需要标号的章节名"></a>不需要标号的章节名</h2><p>加<code>*</code>即可：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">\section*&#123;致谢&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="只在部分列隔断表格"><a href="#只在部分列隔断表格" class="headerlink" title="只在部分列隔断表格"></a>只在部分列隔断表格</h2><p>\cmidrule(l){3-11}</p>
+<h2 id="多行合并"><a href="#多行合并" class="headerlink" title="多行合并"></a>多行合并</h2><p>\multirow{8}{*}{name}</p>
+<p>例子</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">\begin&#123;table*&#125;[ht]  </span><br><span class="line">	\centering </span><br><span class="line">	\caption&#123;性能比较(MovieLens 100k)&#125; </span><br><span class="line">	\begin&#123;tabularx&#125;&#123;17cm&#125;&#123;lllllllllll&#125;</span><br><span class="line">		\hline  </span><br><span class="line">		数据集                     &amp; 维度                   &amp; 方法  &amp; UserWise &amp; ItemWise &amp; EMDP  &amp; RSVD   &amp; SR     &amp; ISVD-I                  &amp; ISVD                    &amp; ISR\\  </span><br><span class="line">		\hline  </span><br><span class="line">		\multirow&#123;8&#125;&#123;*&#125;&#123;ISVD\_U&#125;   &amp;\multirow&#123;4&#125;&#123;*&#125;&#123;10D&#125;   &amp;MAE    &amp;0.9490    &amp;0.9447    &amp;0.8093 &amp; 0.7572 &amp; 0.7466 &amp; \multirow&#123;2&#125;&#123;*&#125;&#123;0.8388&#125; &amp; \multirow&#123;2&#125;&#123;*&#125;&#123;0.6470&#125; &amp; \multirow&#123;2&#125;&#123;*&#125;&#123;0.6423&#125;\\  </span><br><span class="line">	                          	   &amp;                       &amp;提升   &amp;31.82\%   &amp;31.53\%   &amp;20.05\% &amp; 14.55\% &amp;13.34\% &amp; &amp; &amp;  \\ \cmidrule(l)&#123;3-11&#125;  </span><br><span class="line">		                           &amp;                       &amp;RMSE   &amp;1.1355    &amp;1.1257    &amp;1.0116 &amp; 0.9646 &amp; 0.9518 &amp; \multirow&#123;2&#125;&#123;*&#125;&#123;1.0952&#125; &amp; \multirow&#123;2&#125;&#123;*&#125;&#123;0.8247&#125; &amp; \multirow&#123;2&#125;&#123;*&#125;&#123;0.8244&#125;\\ </span><br><span class="line">		                           &amp;                       &amp;提升   &amp;27.37\%   &amp;26.74\%   &amp;18.48\% &amp; 14.50\% &amp;13.35\% &amp; &amp; &amp;  \\ \cmidrule(l)&#123;2-11&#125;</span><br><span class="line">                                   &amp;\multirow&#123;4&#125;&#123;*&#125;&#123;10D&#125;   &amp;MAE    &amp;0.9490    &amp;0.9447    &amp;0.8093 &amp; 0.7519 &amp; 0.7526 &amp; \multirow&#123;2&#125;&#123;*&#125;&#123;0.8388&#125; &amp; \multirow&#123;2&#125;&#123;*&#125;&#123;0.4778&#125; &amp; \multirow&#123;2&#125;&#123;*&#125;&#123;0.4930&#125;\\  </span><br><span class="line">                                   &amp;                       &amp;提升   &amp;49.65\%   &amp;49.42\%   &amp;40.96\% &amp; 36.45\% &amp;36.51\% &amp; &amp; &amp;  \\ \cmidrule(l)&#123;3-11&#125;  </span><br><span class="line">                                   &amp;                       &amp;RMSE   &amp;1.1355    &amp;1.1257    &amp;1.0116 &amp; 0.9643 &amp; 0.9644 &amp; \multirow&#123;2&#125;&#123;*&#125;&#123;1.0952&#125; &amp; \multirow&#123;2&#125;&#123;*&#125;&#123;0.6132&#125; &amp; \multirow&#123;2&#125;&#123;*&#125;&#123;0.6313&#125;\\ </span><br><span class="line">                                   &amp;                       &amp;提升   &amp;46.00\%   &amp;45.53\%   &amp;39.38\% &amp; 36.41\% &amp;36.42\% &amp; &amp; &amp;  \\ </span><br><span class="line">		\hline  </span><br><span class="line">	\end&#123;tabularx&#125;  </span><br><span class="line">\end&#123;table*&#125;S</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://zhouhongh.github.io/2020/02/11/wget%E4%B8%8B%E8%BD%BD%E9%9C%80%E7%99%BB%E5%BD%95%E7%9A%84%E7%BD%91%E9%A1%B5%E4%B8%AD%E7%9A%84%E6%96%87%E4%BB%B6-%E4%BD%BF%E7%94%A8cookie/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="zhouhongh">
+      <meta itemprop="description" content="历尽千帆，仍是少年">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zhouhongh's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/02/11/wget%E4%B8%8B%E8%BD%BD%E9%9C%80%E7%99%BB%E5%BD%95%E7%9A%84%E7%BD%91%E9%A1%B5%E4%B8%AD%E7%9A%84%E6%96%87%E4%BB%B6-%E4%BD%BF%E7%94%A8cookie/" class="post-title-link" itemprop="url">wget下载需登录的网页中的文件(使用cookie)</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-02-11 14:59:38 / 修改时间：15:07:34" itemprop="dateCreated datePublished" datetime="2020-02-11T14:59:38+08:00">2020-02-11</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/skills/" itemprop="url" rel="index">
+                    <span itemprop="name">skills</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="wget下载需登录的网页中的文件（使用cookie"><a href="#wget下载需登录的网页中的文件（使用cookie" class="headerlink" title="wget下载需登录的网页中的文件（使用cookie)"></a>wget下载需登录的网页中的文件（使用cookie)</h1><h2 id="wget简介"><a href="#wget简介" class="headerlink" title="wget简介"></a>wget简介</h2><p>以网络下载 maven 包为例<br>wget -c <a href="http://mirrors.shu.edu.cn/apache/maven/maven-3/3.5.4/binaries/apache-maven-3.5.4-bin.tar.gz" target="_blank" rel="noopener">http://mirrors.shu.edu.cn/apache/maven/maven-3/3.5.4/binaries/apache-maven-3.5.4-bin.tar.gz</a></p>
+<ul>
+<li>wget是linux下一个从网络上自动下载文件的常用自由工具。它支持HTTP，HTTPS和FTP协议，可以使用HTTP代理。一般的使用方法是: wget + 空格 + 参数 + 要下载文件的url路径。默认下载到当前目录中。<br>Wget常用参数</li>
+<li>b：后台下载，Wget默认的是把文件下载到当前目录。</li>
+<li>O：将文件下载到指定的目录中。</li>
+<li>P：保存文件之前先创建指定名称的目录。</li>
+<li>t：尝试连接次数，当Wget无法与服务器建立连接时，尝试连接多少次。</li>
+<li>c：断点续传，如果下载中断，那么连接恢复时会从上次断点开始下载。</li>
+<li>r：使用递归下载</li>
+<li>-http-user=USERNAME   :指定用户名</li>
+<li>-http-passwd=PASSWARD  ：指定密码</li>
+<li>tips:当https网址无法建立ssl连接，可以改为http试一下。</li>
+</ul>
+<h2 id="校园网网关登录"><a href="#校园网网关登录" class="headerlink" title="校园网网关登录"></a>校园网网关登录</h2><ul>
+<li><p>由于本人使用的服务器是在学校的局域网上的，下载数据集时需要使用curl Post登录校园网网关：<br>curl -X POST <a href="http://10.3.8.211/login" target="_blank" rel="noopener">http://10.3.8.211/login</a> -F user=USERNAME -F pass=PASSWORD -F line=<br>解释：上面的网址是北邮的网关登录地址，请替换为自己学校的网关；USERNAME和PASSWARD替换为自己的账号密码，line=的后面不用写东西，空着就好。</p>
+</li>
+<li><p>检查网络是否接通：<br>ping <a href="http://www.baidu.com![ping通了](https://img-blog.csdnimg.cn/2019101519301091.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3poaF9oaHo=,size_16,color_FFFFFF,t_70)" target="_blank" rel="noopener">www.baidu.com![ping通了](https://img-blog.csdnimg.cn/2019101519301091.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3poaF9oaHo=,size_16,color_FFFFFF,t_70)</a><br>上图这样就表示ping通了（使用ctrl+c)退出。</p>
+</li>
+</ul>
+<h2 id="使用浏览器cookie信息帮助你登录网站"><a href="#使用浏览器cookie信息帮助你登录网站" class="headerlink" title="使用浏览器cookie信息帮助你登录网站"></a>使用浏览器cookie信息帮助你登录网站</h2><ul>
+<li><strong>命令：</strong><br>wget –header=”Cookie: XXXX” -b URL<br>例如：wget –header=”Cookie:PHPSESSID=g7fjsdfhujl1kp4ttn” -b <a href="http://www.cityscapes-dataset.com/file-handling/?packageID=14" target="_blank" rel="noopener">http://www.cityscapes-dataset.com/file-handling/?packageID=14</a></li>
+<li>b表示启用后台下载。由于是后台下载，不会显示进度条，成功启动下载会提示进程号，如下：<br><img src="https://img-blog.csdnimg.cn/2019101519411712.png" alt="带-b命令的描述"></li>
+<li>查看你的用户目录下的进程。<br>ps -u USERNSME 找到上面提示的pid即说明已经出于后台下载中。- </li>
+<li>查看下载进度：<br>cat wget-log<br>在下载目录下，cat下载任务对应的log文件<br>或者使用命令：<br>tail -f wget-log</li>
+</ul>
+<ul>
+<li><strong>取得Cookie信息（重点！）</strong></li>
+</ul>
+<ol>
+<li>用你的浏览器打开下载文件所在的网站，并登录好。（这里我用的edge浏览器）</li>
+<li>F12键打开网页源代码，调到网络一栏，然后刷新网页，这时右侧标头（headers)栏中会出现cookie信息，把它复制下来。如下<br><img src="https://img-blog.csdnimg.cn/20191015195117183.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3poaF9oaHo=,size_16,color_FFFFFF,t_70" alt="获取cookie"></li>
+<li>把–header=”Cookie: XXXX”里的XXXX用复制的cookie信息替代即可。<br>OVER!!</li>
+</ol>
+<p>参考资料：<a href="https://www.cnblogs.com/hankal/p/9815068.html" target="_blank" rel="noopener">https://www.cnblogs.com/hankal/p/9815068.html</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://zhouhongh.github.io/2019/11/12/classmethod%E4%BF%AE%E9%A5%B0%E7%AC%A6/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -837,175 +1024,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://zhouhongh.github.io/2019/11/06/%E5%85%B3%E9%94%AE%E5%B8%A7%E6%8A%BD%E5%8F%96%E6%96%B9%E6%B3%95%E8%B0%83%E7%A0%94/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="zhouhongh">
-      <meta itemprop="description" content="历尽千帆，仍是少年">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="zhouhongh's blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/11/06/%E5%85%B3%E9%94%AE%E5%B8%A7%E6%8A%BD%E5%8F%96%E6%96%B9%E6%B3%95%E8%B0%83%E7%A0%94/" class="post-title-link" itemprop="url">关键帧抽取方法调研</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-11-06 10:15:08" itemprop="dateCreated datePublished" datetime="2019-11-06T10:15:08+08:00">2019-11-06</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-11-12 10:25:06" itemprop="dateModified" datetime="2019-11-12T10:25:06+08:00">2019-11-12</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%B0%83%E7%A0%94/" itemprop="url" rel="index">
-                    <span itemprop="name">调研</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>关键帧抽取方法在视频重建，视频表示，视频检索等方面有重要的应用。在基于单帧的视频生成任务中，选取合适的关键帧来生成预测视频尤为重要。</p>
-<p>在设想中，希望实现检测人的身体姿态转换的帧作为关键帧，例如转身、偏头这样的帧。因为基于单帧的视频预测难以复原看不到的信息，所以给定人物在某一视角下的外表就极为重要。利用这样包含人物各个视角下的外表的关键帧，预计会提升生成视频的真实性。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2019/11/06/%E5%85%B3%E9%94%AE%E5%B8%A7%E6%8A%BD%E5%8F%96%E6%96%B9%E6%B3%95%E8%B0%83%E7%A0%94/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://zhouhongh.github.io/2019/11/02/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E8%AE%B0%E5%BD%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="zhouhongh">
-      <meta itemprop="description" content="历尽千帆，仍是少年">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="zhouhongh's blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/11/02/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E8%AE%B0%E5%BD%95/" class="post-title-link" itemprop="url">个人博客搭建记录</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-11-02 16:39:30" itemprop="dateCreated datePublished" datetime="2019-11-02T16:39:30+08:00">2019-11-02</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-11-06 10:01:40" itemprop="dateModified" datetime="2019-11-06T10:01:40+08:00">2019-11-06</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/have-fun/" itemprop="url" rel="index">
-                    <span itemprop="name">have fun</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>无意中在网上看到风格简约优雅的博客，感觉很喜欢。对比自己之前使用的csdn博客，觉得csdn的博客还是在外观上不够好看。由于我写博客的目的是为了记录自己学习之路上的一点一滴的进步，同时一些调试程序的记录我也可以在不同的设备上面看到，也方便我分享。不求成为博客大神，只为记录自己。因此一个中意的外观与方便的排版布局可谓十分重要。发现自己看到的那个博客文末有写道由HEXO驱动，便开始查看安装教程，希望自己也可以搭建这样的一个博客。</p>
-<p>我使用hexo+github搭建自己的个人博客，并使用了Next的主题。博客本地电脑编辑，可以上传托管到Github仓库，使用网址 username.github.io直接访问。无网络的情况下也可以本地预览。</p>
-<p>下面进入正题，开始Hexo+Github+Next的个人博客搭建教学。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2019/11/02/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E8%AE%B0%E5%BD%95/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1056,20 +1074,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-count">14</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
