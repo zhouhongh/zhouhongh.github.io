@@ -214,7 +214,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-02-18 10:30:25 / 修改时间：10:38:50" itemprop="dateCreated datePublished" datetime="2020-02-18T10:30:25+08:00">2020-02-18</time>
+              <time title="创建时间：2020-02-18 10:30:25 / 修改时间：10:46:42" itemprop="dateCreated datePublished" datetime="2020-02-18T10:30:25+08:00">2020-02-18</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -243,10 +243,10 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">zip xxx.zip xxx   #把 xxx 压缩为 xxx.zip</span><br><span class="line"></span><br><span class="line">unzip xxx.zip   #解压xxx.zip</span><br></pre></td></tr></table></figure>
 
 <p>2、tar.gz格式</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">tar -zxvf xxx.tar.gz   ##解压 xxx.tar.gz</span><br><span class="line"></span><br><span class="line">tar -zxvf xxx.tar.gz -C /usr/local/xxx   #解压 xxx.tar.gz 到指定目录</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf xxx.tar.gz   ##解压 xxx.tar.gz</span><br><span class="line"></span><br><span class="line">tar -zxvf xxx.tar.gz -C /usr/local/xxx   #解压 xxx.tar.gz 到指定目录</span><br><span class="line"></span><br><span class="line">tar -zxcf fileName.tar.gz  fileName   #压缩 fileName 至 fileName.tar.gz</span><br></pre></td></tr></table></figure>
 
 <p>3、.gz格式</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gzip -r xxx  ##压缩xxx里面的子文件（gzip -r 不会压缩xxx为xxx.gz,只会把xxx文件夹里面的单个文件压缩为gz）</span><br><span class="line">gunzip xxx.gz   #解压xxx.gz</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gzip -r xxx  ##压缩xxx里面的子文件（gzip -r 不会压缩xxx为xxx.gz,只会把xxx文件夹里面的单个文件压缩为gz）</span><br><span class="line"></span><br><span class="line">gunzip xxx.gz   #解压xxx.gz</span><br></pre></td></tr></table></figure>
 <p>————————————————</p>
 <p>原文链接：<a href="https://blog.csdn.net/weixin_43714266/article/details/87967543" target="_blank" rel="noopener">https://blog.csdn.net/weixin_43714266/article/details/87967543</a></p>
 
@@ -374,10 +374,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-02-17 16:54:31 / 修改时间：16:57:13" itemprop="dateCreated datePublished" datetime="2020-02-17T16:54:31+08:00">2020-02-17</time>
+              <time title="创建时间：2020-02-17 16:54:31" itemprop="dateCreated datePublished" datetime="2020-02-17T16:54:31+08:00">2020-02-17</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-02-18 10:47:51" itemprop="dateModified" datetime="2020-02-18T10:47:51+08:00">2020-02-18</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -402,8 +408,7 @@
 
       
           <p>遇到乱码 在html文件前加入：</p>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"Content-Type"</span> <span class="attr">content</span>=<span class="string">"text/html; charset=utf-8"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
 <p>另：实测插入图片位置的对齐问题，edge浏览器更改align参数无效，Google有效。</p>
 
       
