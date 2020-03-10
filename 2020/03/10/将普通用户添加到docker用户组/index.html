@@ -51,16 +51,18 @@
   };
 </script>
 
-  <meta name="description" content="历尽千帆，仍是少年">
-<meta property="og:type" content="website">
-<meta property="og:title" content="zhouhongh&#39;s blog">
-<meta property="og:url" content="https:&#x2F;&#x2F;zhouhongh.github.io&#x2F;tags&#x2F;%E5%85%B3%E9%94%AE%E5%B8%A7&#x2F;index.html">
+  <meta name="description" content="原文链接： https:&#x2F;&#x2F;www.cnblogs.com&#x2F;caidingyu&#x2F;p&#x2F;10576194.html  1.使用带有sudo权限的账号登录到服务器系统，下文以将名字为test的用户添加到docker用户组为例。 2.新建用户组docker之前，查看用户组中有没有docker组 1sudo cat &#x2F;etc&#x2F;group | grep docker  3.创建docker分组，并将相应的用户">
+<meta name="keywords" content="Linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="将普通用户添加到docker用户组">
+<meta property="og:url" content="https:&#x2F;&#x2F;zhouhongh.github.io&#x2F;2020&#x2F;03&#x2F;10&#x2F;%E5%B0%86%E6%99%AE%E9%80%9A%E7%94%A8%E6%88%B7%E6%B7%BB%E5%8A%A0%E5%88%B0docker%E7%94%A8%E6%88%B7%E7%BB%84&#x2F;index.html">
 <meta property="og:site_name" content="zhouhongh&#39;s blog">
-<meta property="og:description" content="历尽千帆，仍是少年">
+<meta property="og:description" content="原文链接： https:&#x2F;&#x2F;www.cnblogs.com&#x2F;caidingyu&#x2F;p&#x2F;10576194.html  1.使用带有sudo权限的账号登录到服务器系统，下文以将名字为test的用户添加到docker用户组为例。 2.新建用户组docker之前，查看用户组中有没有docker组 1sudo cat &#x2F;etc&#x2F;group | grep docker  3.创建docker分组，并将相应的用户">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-03-10T12:36:31.410Z">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://zhouhongh.github.io/tags/%E5%85%B3%E9%94%AE%E5%B8%A7/">
+<link rel="canonical" href="https://zhouhongh.github.io/2020/03/10/%E5%B0%86%E6%99%AE%E9%80%9A%E7%94%A8%E6%88%B7%E6%B7%BB%E5%8A%A0%E5%88%B0docker%E7%94%A8%E6%88%B7%E7%BB%84/">
 
 
 <script id="page-configurations">
@@ -68,13 +70,13 @@
   CONFIG.page = {
     sidebar: "",
     isHome: false,
-    isPost: false,
+    isPost: true,
     isPage: false,
     isArchive: false
   };
 </script>
 
-  <title>标签: 关键帧 | zhouhongh's blog</title>
+  <title>将普通用户添加到docker用户组 | zhouhongh's blog</title>
   
 
 
@@ -184,50 +186,113 @@
           <div class="content">
             
 
+  <div class="posts-expand">
+      
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <h1 class="collection-header">关键帧
-          <small>标签</small>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://zhouhongh.github.io/2020/03/10/%E5%B0%86%E6%99%AE%E9%80%9A%E7%94%A8%E6%88%B7%E6%B7%BB%E5%8A%A0%E5%88%B0docker%E7%94%A8%E6%88%B7%E7%BB%84/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="zhouhongh">
+      <meta itemprop="description" content="历尽千帆，仍是少年">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zhouhongh's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          将普通用户添加到docker用户组
         </h1>
-      </div>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-03-10 20:29:14 / 修改时间：20:36:31" itemprop="dateCreated datePublished" datetime="2020-03-10T20:29:14+08:00">2020-03-10</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/skills/" itemprop="url" rel="index">
+                    <span itemprop="name">skills</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <h1 class="collection-header">2019</h1>
+        <p>原文链接： <a href="https://www.cnblogs.com/caidingyu/p/10576194.html" target="_blank" rel="noopener">https://www.cnblogs.com/caidingyu/p/10576194.html</a> </p>
+<p>1.使用带有sudo权限的账号登录到服务器系统，下文以将名字为test的用户添加到docker用户组为例。</p>
+<p>2.新建用户组docker之前，查看用户组中有没有docker组</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo cat /etc/group | grep docker</span><br></pre></td></tr></table></figure>
+
+<p>3.创建docker分组，并将相应的用户添加到这个分组里面（999为组id，可以不指定)，如果docker已经存在，则不需要再进行创建(即不执行第一条命令)</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo groupadd -g 999 docker</span><br><span class="line">sudo usermod -aG dockerroot test</span><br><span class="line">sudo usermod -aG docker test</span><br></pre></td></tr></table></figure>
+
+<p>4.检查一下创建是否创建成功</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/group | grep test</span><br></pre></td></tr></table></figure>
+
+<p>5.退出当前用户登陆状态，然后重新登录，以便让权限生效,或重启docker-daemon</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl restart docker</span><br></pre></td></tr></table></figure>
+
+<p>6.确认你可以直接运行docker命令，执行docker命令</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker info</span><br></pre></td></tr></table></figure>
+
+
+
+
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+    
+    
+    
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2019-11-06T10:15:08+08:00"
-              content="2019-11-06">
-          11-06
-        </time>
-      </div>
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Linux/" rel="tag"># Linux</a>
+          </div>
 
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2019/11/06/%E5%85%B3%E9%94%AE%E5%B8%A7%E6%8A%BD%E5%8F%96%E6%96%B9%E6%B3%95%E8%B0%83%E7%A0%94/" itemprop="url">
-            <span itemprop="name">关键帧抽取方法调研</span>
-          </a>
-      </h2>
+        
 
-    </header>
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/2020/03/10/Linux%E9%85%8D%E7%BD%AEsshkey%E5%88%B0github/" rel="next" title="Linux配置sshkey到github">
+                  <i class="fa fa-chevron-left"></i> Linux配置sshkey到github
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+            </div>
+          </div>
+      </footer>
+    
   </article>
+  
+  
+  
 
-    </div>
   </div>
-  
-  
-  
-
-  
-
 
 
           </div>

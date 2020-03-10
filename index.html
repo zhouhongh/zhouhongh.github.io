@@ -189,6 +189,94 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://zhouhongh.github.io/2020/03/10/%E5%B0%86%E6%99%AE%E9%80%9A%E7%94%A8%E6%88%B7%E6%B7%BB%E5%8A%A0%E5%88%B0docker%E7%94%A8%E6%88%B7%E7%BB%84/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="zhouhongh">
+      <meta itemprop="description" content="历尽千帆，仍是少年">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zhouhongh's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/03/10/%E5%B0%86%E6%99%AE%E9%80%9A%E7%94%A8%E6%88%B7%E6%B7%BB%E5%8A%A0%E5%88%B0docker%E7%94%A8%E6%88%B7%E7%BB%84/" class="post-title-link" itemprop="url">将普通用户添加到docker用户组</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-03-10 20:29:14 / 修改时间：20:36:31" itemprop="dateCreated datePublished" datetime="2020-03-10T20:29:14+08:00">2020-03-10</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/skills/" itemprop="url" rel="index">
+                    <span itemprop="name">skills</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>原文链接： <a href="https://www.cnblogs.com/caidingyu/p/10576194.html" target="_blank" rel="noopener">https://www.cnblogs.com/caidingyu/p/10576194.html</a> </p>
+<p>1.使用带有sudo权限的账号登录到服务器系统，下文以将名字为test的用户添加到docker用户组为例。</p>
+<p>2.新建用户组docker之前，查看用户组中有没有docker组</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo cat /etc/group | grep docker</span><br></pre></td></tr></table></figure>
+
+<p>3.创建docker分组，并将相应的用户添加到这个分组里面（999为组id，可以不指定)，如果docker已经存在，则不需要再进行创建(即不执行第一条命令)</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo groupadd -g 999 docker</span><br><span class="line">sudo usermod -aG dockerroot test</span><br><span class="line">sudo usermod -aG docker test</span><br></pre></td></tr></table></figure>
+
+<p>4.检查一下创建是否创建成功</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/group | grep test</span><br></pre></td></tr></table></figure>
+
+<p>5.退出当前用户登陆状态，然后重新登录，以便让权限生效,或重启docker-daemon</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl restart docker</span><br></pre></td></tr></table></figure>
+
+<p>6.确认你可以直接运行docker命令，执行docker命令</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker info</span><br></pre></td></tr></table></figure>
+
+
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://zhouhongh.github.io/2020/03/10/Linux%E9%85%8D%E7%BD%AEsshkey%E5%88%B0github/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -888,83 +976,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://zhouhongh.github.io/2019/11/12/classmethod%E4%BF%AE%E9%A5%B0%E7%AC%A6/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="zhouhongh">
-      <meta itemprop="description" content="历尽千帆，仍是少年">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="zhouhongh's blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/11/12/classmethod%E4%BF%AE%E9%A5%B0%E7%AC%A6/" class="post-title-link" itemprop="url">classmethod修饰符</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2019-11-12 17:26:35 / 修改时间：17:28:52" itemprop="dateCreated datePublished" datetime="2019-11-12T17:26:35+08:00">2019-11-12</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/python/" itemprop="url" rel="index">
-                    <span itemprop="name">python</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><strong>classmethod</strong> 修饰符对应的函数不需要实例化，不需要 self 参数，但第一个参数需要是表示自身类的 cls 参数，可以来调用类的属性，类的方法，实例化对象等。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2019/11/12/classmethod%E4%BF%AE%E9%A5%B0%E7%AC%A6/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1015,7 +1026,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">21</span>
+          <span class="site-state-item-count">22</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
