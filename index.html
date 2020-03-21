@@ -189,6 +189,107 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://zhouhongh.github.io/2020/03/19/%E5%8A%A8%E4%BD%9C%E5%85%B3%E7%B3%BB%E8%B0%83%E7%A0%94/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="zhouhongh">
+      <meta itemprop="description" content="历尽千帆，仍是少年">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zhouhongh's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/03/19/%E5%8A%A8%E4%BD%9C%E5%85%B3%E7%B3%BB%E8%B0%83%E7%A0%94/" class="post-title-link" itemprop="url">动作关系调研</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-03-19 16:18:53" itemprop="dateCreated datePublished" datetime="2020-03-19T16:18:53+08:00">2020-03-19</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-03-21 18:38:34" itemprop="dateModified" datetime="2020-03-21T18:38:34+08:00">2020-03-21</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%B0%83%E7%A0%94/" itemprop="url" rel="index">
+                    <span itemprop="name">调研</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="Bayesian-Graph-Convolution-LSTM-for-Skeleton-Based-Action-Recognition"><a href="#Bayesian-Graph-Convolution-LSTM-for-Skeleton-Based-Action-Recognition" class="headerlink" title="Bayesian Graph Convolution LSTM for Skeleton Based Action Recognition"></a>Bayesian Graph Convolution LSTM for Skeleton Based Action Recognition</h2><p>ICCV2019 的文章</p>
+<p>利用贝叶斯网络提高模型对同一动作不同姿态的适应性</p>
+<p><img src="/2020/03/19/%E5%8A%A8%E4%BD%9C%E5%85%B3%E7%B3%BB%E8%B0%83%E7%A0%94/D:%5Chexo%5Csource_posts%5C%E5%8A%A8%E4%BD%9C%E5%85%B3%E7%B3%BB%E8%B0%83%E7%A0%94%5Cbayes-action.png" alt="bayes"></p>
+<h2 id="Spatial-temporal-graph-convolutional-networks-for-skeleton-based-action-recognition"><a href="#Spatial-temporal-graph-convolutional-networks-for-skeleton-based-action-recognition" class="headerlink" title="Spatial temporal graph convolutional networks for skeleton-based action recognition"></a>Spatial temporal graph convolutional networks for skeleton-based action recognition</h2><p>AAAI 2018</p>
+<p>ST-GCN</p>
+<p><img src="/2020/03/19/%E5%8A%A8%E4%BD%9C%E5%85%B3%E7%B3%BB%E8%B0%83%E7%A0%94/D:%5Chexo%5Csource_posts%5C%E5%8A%A8%E4%BD%9C%E5%85%B3%E7%B3%BB%E8%B0%83%E7%A0%94%5Cst-gcn.png" alt="st-gcn"></p>
+<p>在文章中，作者提出一种卷积的思路，首先确定一个卷积中心（也就是一个关节点）：</p>
+<p>\1. 在 spatial 维度上，取与之相邻的点，作为需要参与卷积的点；</p>
+<p>\2. 在 temporal 维度上，取前后帧在相同位置的点，作为需要参与卷积的点。</p>
+<p><a href="https://github.com/yysijie/st-gcn" target="_blank" rel="noopener">https://github.com/yysijie/st-gcn</a></p>
+<h2 id="Deep-Progressive-Reinforcement-Learning-for-Skeleton-based-Action-Recognition"><a href="#Deep-Progressive-Reinforcement-Learning-for-Skeleton-based-Action-Recognition" class="headerlink" title="Deep Progressive Reinforcement Learning for Skeleton-based Action Recognition"></a>Deep Progressive Reinforcement Learning for Skeleton-based Action Recognition</h2><p> CVPR 2018  </p>
+<p>DPRL+GCNN</p>
+<p><img src="/2020/03/19/%E5%8A%A8%E4%BD%9C%E5%85%B3%E7%B3%BB%E8%B0%83%E7%A0%94/dprl+gcnn.png" alt="DPRL+GCNN"></p>
+<p> 作者提出了一种取关键帧的方法，类似于视频压缩中的取关键帧。因为在骨架序列中前后帧的信息可能会比较冗余，所以只需要选取序列中比较有代表性的关键帧，就可以进行动作的分类识别。所以在 GCNN 之前，作者加入了一个 FDNe t 用来提取关键帧。作者实验证明，运用了取关键帧的方法，能够增加识别的准确率。 </p>
+<h2 id="Graph-Edge-Convolutional-Neural-Networks-for-Skeleton-Based-Action-Recognition"><a href="#Graph-Edge-Convolutional-Neural-Networks-for-Skeleton-Based-Action-Recognition" class="headerlink" title="Graph Edge Convolutional Neural Networks for Skeleton Based Action Recognition"></a>Graph Edge Convolutional Neural Networks for Skeleton Based Action Recognition</h2><p>IEEE 2018</p>
+<p>GEGCN</p>
+<p> 在文章中，作者提出除了给图中的点做卷积之外，还可以给图中的边做卷积，这就是所说的 Graph edge convolution, 卷积方式如下图所示 </p>
+<p><img src="/2020/03/19/%E5%8A%A8%E4%BD%9C%E5%85%B3%E7%B3%BB%E8%B0%83%E7%A0%94/D:%5Chexo%5Csource_posts%5C%E5%8A%A8%E4%BD%9C%E5%85%B3%E7%B3%BB%E8%B0%83%E7%A0%94%5CGEGCN.png" alt="GEGCN"></p>
+<h2 id="Optimized-Skeleton-based-Action-Recognition-via-Sparsified-Graph-Regression"><a href="#Optimized-Skeleton-based-Action-Recognition-via-Sparsified-Graph-Regression" class="headerlink" title="Optimized Skeleton-based Action Recognition via Sparsified Graph Regression"></a>Optimized Skeleton-based Action <em>Recognition</em> <em>via</em> <em>Sparsified</em> <em>Graph</em> <em>Regression</em></h2><p>SGR-GCN</p>
+<p> graph regression based GCN(GR-GCN) 网络 , GR-GCN 的作用是用来学习骨架图中关节点联系的强弱程度, 如下图所示： </p>
+<p><img src="/2020/03/19/%E5%8A%A8%E4%BD%9C%E5%85%B3%E7%B3%BB%E8%B0%83%E7%A0%94/D:%5Chexo%5Csource_posts%5C%E5%8A%A8%E4%BD%9C%E5%85%B3%E7%B3%BB%E8%B0%83%E7%A0%94%5CGR-GCN.png" alt="GR_GCN"></p>
+<h2 id="Non-Local-Graph-Convolutional-Networks-for-Skeleton-Based-Action-Recognition"><a href="#Non-Local-Graph-Convolutional-Networks-for-Skeleton-Based-Action-Recognition" class="headerlink" title="Non-Local Graph Convolutional Networks for Skeleton-Based Action Recognition"></a>Non-Local Graph Convolutional Networks for Skeleton-Based Action Recognition</h2><p>2s-NLGCN</p>
+<p> 采用的是 spectral-based graph convolution networks，并且也使用了双流的网络结构，一个网络处理点（joint）的信息，另一个网络处理边 (bone) 的信息: </p>
+<p><img src="/2020/03/19/%E5%8A%A8%E4%BD%9C%E5%85%B3%E7%B3%BB%E8%B0%83%E7%A0%94/D:%5Chexo%5Csource_posts%5C%E5%8A%A8%E4%BD%9C%E5%85%B3%E7%B3%BB%E8%B0%83%E7%A0%94%5Cs_NLGCN2.png" alt="2s-nlgcn"></p>
+<h2 id="Actional-Structural-Graph-Convolutional-Networks-for-Skeleton-based-Action-Recognition"><a href="#Actional-Structural-Graph-Convolutional-Networks-for-Skeleton-based-Action-Recognition" class="headerlink" title="Actional-Structural Graph Convolutional Networks for Skeleton-based Action Recognition"></a>Actional-Structural Graph Convolutional Networks for Skeleton-based Action Recognition</h2><p>AS_GCN</p>
+<p>CVPR 2019</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://zhouhongh.github.io/2020/03/10/%E5%B0%86%E6%99%AE%E9%80%9A%E7%94%A8%E6%88%B7%E6%B7%BB%E5%8A%A0%E5%88%B0docker%E7%94%A8%E6%88%B7%E7%BB%84/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -887,95 +988,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://zhouhongh.github.io/2020/02/11/wget%E4%B8%8B%E8%BD%BD%E9%9C%80%E7%99%BB%E5%BD%95%E7%9A%84%E7%BD%91%E9%A1%B5%E4%B8%AD%E7%9A%84%E6%96%87%E4%BB%B6-%E4%BD%BF%E7%94%A8cookie/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="zhouhongh">
-      <meta itemprop="description" content="历尽千帆，仍是少年">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="zhouhongh's blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/02/11/wget%E4%B8%8B%E8%BD%BD%E9%9C%80%E7%99%BB%E5%BD%95%E7%9A%84%E7%BD%91%E9%A1%B5%E4%B8%AD%E7%9A%84%E6%96%87%E4%BB%B6-%E4%BD%BF%E7%94%A8cookie/" class="post-title-link" itemprop="url">wget下载需登录的网页中的文件(使用cookie)</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-02-11 14:59:38 / 修改时间：15:11:50" itemprop="dateCreated datePublished" datetime="2020-02-11T14:59:38+08:00">2020-02-11</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/skills/" itemprop="url" rel="index">
-                    <span itemprop="name">skills</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="wget下载需登录的网页中的文件（使用cookie"><a href="#wget下载需登录的网页中的文件（使用cookie" class="headerlink" title="wget下载需登录的网页中的文件（使用cookie)"></a>wget下载需登录的网页中的文件（使用cookie)</h1><h2 id="wget简介"><a href="#wget简介" class="headerlink" title="wget简介"></a>wget简介</h2><p>以网络下载 maven 包为例<br>wget -c <a href="http://mirrors.shu.edu.cn/apache/maven/maven-3/3.5.4/binaries/apache-maven-3.5.4-bin.tar.gz" target="_blank" rel="noopener">http://mirrors.shu.edu.cn/apache/maven/maven-3/3.5.4/binaries/apache-maven-3.5.4-bin.tar.gz</a></p>
-<ul>
-<li>wget是linux下一个从网络上自动下载文件的常用自由工具。它支持HTTP，HTTPS和FTP协议，可以使用HTTP代理。一般的使用方法是: wget + 空格 + 参数 + 要下载文件的url路径。默认下载到当前目录中。<br>Wget常用参数</li>
-<li>b：后台下载，Wget默认的是把文件下载到当前目录。</li>
-<li>O：将文件下载到指定的目录中。</li>
-<li>P：保存文件之前先创建指定名称的目录。</li>
-<li>t：尝试连接次数，当Wget无法与服务器建立连接时，尝试连接多少次。</li>
-<li>c：断点续传，如果下载中断，那么连接恢复时会从上次断点开始下载。</li>
-<li>r：使用递归下载</li>
-<li>-http-user=USERNAME   :指定用户名</li>
-<li>-http-passwd=PASSWARD  ：指定密码</li>
-<li>tips:当https网址无法建立ssl连接，可以改为http试一下。</li>
-</ul>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/02/11/wget%E4%B8%8B%E8%BD%BD%E9%9C%80%E7%99%BB%E5%BD%95%E7%9A%84%E7%BD%91%E9%A1%B5%E4%B8%AD%E7%9A%84%E6%96%87%E4%BB%B6-%E4%BD%BF%E7%94%A8cookie/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1026,7 +1038,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">22</span>
+          <span class="site-state-item-count">23</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1039,7 +1051,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-count">17</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
