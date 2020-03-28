@@ -189,6 +189,101 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://zhouhongh.github.io/2020/03/28/AS-GCN%E7%9A%84AIM%E6%A8%A1%E5%9D%97%E8%A7%A3%E8%AF%BB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="zhouhongh">
+      <meta itemprop="description" content="历尽千帆，仍是少年">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zhouhongh's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/03/28/AS-GCN%E7%9A%84AIM%E6%A8%A1%E5%9D%97%E8%A7%A3%E8%AF%BB/" class="post-title-link" itemprop="url">AS-GCN的AIM模块解读</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-03-28 18:53:14 / 修改时间：21:09:26" itemprop="dateCreated datePublished" datetime="2020-03-28T18:53:14+08:00">2020-03-28</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%A7%A3%E8%AF%BB/" itemprop="url" rel="index">
+                    <span itemprop="name">解读</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="AIM结构"><a href="#AIM结构" class="headerlink" title="AIM结构"></a>AIM结构</h2><p><img src="/2020/03/28/AS-GCN%E7%9A%84AIM%E6%A8%A1%E5%9D%97%E8%A7%A3%E8%AF%BB/%E7%BB%93%E6%9E%84.png" alt="aim"></p>
+<p>encoder input:关节特征</p>
+<p>encoder output：A-links</p>
+<p>decoder input: A-links &amp; 当前帧的关节点坐标</p>
+<p>decoder output:下一帧的关节点坐标</p>
+<h2 id="formula"><a href="#formula" class="headerlink" title="formula"></a>formula</h2><h3 id="encoder"><a href="#encoder" class="headerlink" title="encoder"></a>encoder</h3><p><img src="/2020/03/28/AS-GCN%E7%9A%84AIM%E6%A8%A1%E5%9D%97%E8%A7%A3%E8%AF%BB/2.png" alt="aim"></p>
+<p>C个A-link类型，n个关节点，A_i,j,c表示第i个和第j个关节点具备c类A-link类型的概率。上式的A即A-links.</p>
+<p>输入x_i = vec(X_i,:,:)表示第i个关节点在所有帧上的坐标串联起来的特征。通过坐标得到link特征再得到link类型。为了有效更新link特征，这里涉及两种特征表示，一对关节点之间的特征Q_i,j（link特征）和一个关节点的单独特征p_i（joint特征），他们通过如下两个公式交替更新：</p>
+<p><img src="/2020/03/28/AS-GCN%E7%9A%84AIM%E6%A8%A1%E5%9D%97%E8%A7%A3%E8%AF%BB/3.png" alt="aim"></p>
+<p><img src="/2020/03/28/AS-GCN%E7%9A%84AIM%E6%A8%A1%E5%9D%97%E8%A7%A3%E8%AF%BB/4.png" alt="aim"></p>
+<p>f()代表多层感知机，F()是聚合link特征得到关节点特征。圈加表示级联</p>
+<p>经过k步，encoder输出如下：</p>
+<p><img src="/2020/03/28/AS-GCN%E7%9A%84AIM%E6%A8%A1%E5%9D%97%E8%A7%A3%E8%AF%BB/5.png" alt="aim"></p>
+<p>r是符合Gumbel(0,1)分布的独立同分布的随机数，分子t用来控制A的离散程度。</p>
+<h3 id="decoder"><a href="#decoder" class="headerlink" title="decoder"></a>decoder</h3><p>输入前面t个时刻的关节点坐标，和A-link矩阵，输出t+1时刻的关节点坐标，如下式所示：</p>
+<p><img src="/2020/03/28/AS-GCN%E7%9A%84AIM%E6%A8%A1%E5%9D%97%E8%A7%A3%E8%AF%BB/6.png" alt="aim"></p>
+<p>这里X_t代表t时刻的所有3D关节点坐标。</p>
+<p>decoder可用如下四个公式描述：</p>
+<p><img src="/2020/03/28/AS-GCN%E7%9A%84AIM%E6%A8%A1%E5%9D%97%E8%A7%A3%E8%AF%BB/8.png" alt="aim"></p>
+<p>decoder的基本思路是从i，j关节点之间的A-link分布A_i,j,:中抽取出关节对特征Q_i,j，然后聚合得到关节点特征p_i(和编码器的p与Q的更新方式相同)，将关节点特征通过GRU得到下一时刻隐藏状态，再将此隐藏状态通过一个多层感知机输出得到一个坐标u，预测的关节点坐标从均值为u的高斯分布中得到：</p>
+<p><img src="/2020/03/28/AS-GCN%E7%9A%84AIM%E6%A8%A1%E5%9D%97%E8%A7%A3%E8%AF%BB/7.png" alt="aim"></p>
+<h3 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h3><p><img src="/2020/03/28/AS-GCN%E7%9A%84AIM%E6%A8%A1%E5%9D%97%E8%A7%A3%E8%AF%BB/9.png" alt="aim"></p>
+<p>其中A(0):,:,c是“ghost link”其概率是独立设定的，不参与更新，目的是使Alink 更稀疏，因为作者观察到稀疏的A具有更好的效果（直觉上的原因可能是太多的链接会捕获无用的依赖关系，从而混淆动作模式学习）</p>
+<h3 id="AGC"><a href="#AGC" class="headerlink" title="AGC"></a>AGC</h3><p>得到推断的A-links后，使用^A(c)_act作为图卷积核.<img src="/2020/03/28/AS-GCN%E7%9A%84AIM%E6%A8%A1%E5%9D%97%E8%A7%A3%E8%AF%BB/11.png" alt="aim">)定义为<img src="/2020/03/28/AS-GCN%E7%9A%84AIM%E6%A8%A1%E5%9D%97%E8%A7%A3%E8%AF%BB/12.png" alt="aim"></p>
+<p>动作图卷积AGC可用下式描述：</p>
+<p><img src="/2020/03/28/AS-GCN%E7%9A%84AIM%E6%A8%A1%E5%9D%97%E8%A7%A3%E8%AF%BB/13.png" alt="aim"></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://zhouhongh.github.io/2020/03/19/%E5%8A%A8%E4%BD%9C%E5%85%B3%E7%B3%BB%E8%B0%83%E7%A0%94/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -929,83 +1024,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://zhouhongh.github.io/2020/02/11/latex%E8%AF%AD%E6%B3%95%E8%AE%B0%E5%BD%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="zhouhongh">
-      <meta itemprop="description" content="历尽千帆，仍是少年">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="zhouhongh's blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/02/11/latex%E8%AF%AD%E6%B3%95%E8%AE%B0%E5%BD%95/" class="post-title-link" itemprop="url">latex语法记录</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-02-11 15:03:40 / 修改时间：15:11:27" itemprop="dateCreated datePublished" datetime="2020-02-11T15:03:40+08:00">2020-02-11</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/skills/" itemprop="url" rel="index">
-                    <span itemprop="name">skills</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="整段缩进"><a href="#整段缩进" class="headerlink" title="整段缩进"></a>整段缩进</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">\usepackage&#123;changepage&#125;</span><br><span class="line">\begin&#123;adjustwidth&#125;&#123;2em&#125;&#123;0em&#125;</span><br><span class="line">- 如何通过合并估算的数据来缓解基于奇异值分解方法的数据稀疏性?\\	</span><br><span class="line">- 如何生成有效的输入数据?\\</span><br><span class="line">- 合并估算数据的SVD模型能否提高推荐质量?\\</span><br><span class="line">\end&#123;adjustwidth&#125;</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/02/11/latex%E8%AF%AD%E6%B3%95%E8%AE%B0%E5%BD%95/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1056,20 +1074,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-count">24</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-count">19</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
