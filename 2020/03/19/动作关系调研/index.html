@@ -66,7 +66,7 @@
 <meta property="og:image" content="https:&#x2F;&#x2F;zhouhongh.github.io&#x2F;2020&#x2F;03&#x2F;19&#x2F;%E5%8A%A8%E4%BD%9C%E5%85%B3%E7%B3%BB%E8%B0%83%E7%A0%94&#x2F;GR-GCN.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;zhouhongh.github.io&#x2F;2020&#x2F;03&#x2F;19&#x2F;%E5%8A%A8%E4%BD%9C%E5%85%B3%E7%B3%BB%E8%B0%83%E7%A0%94&#x2F;s_NLGCN2.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;zhouhongh.github.io&#x2F;2020&#x2F;03&#x2F;19&#x2F;%E5%8A%A8%E4%BD%9C%E5%85%B3%E7%B3%BB%E8%B0%83%E7%A0%94&#x2F;as-gcn.png">
-<meta property="og:updated_time" content="2020-03-22T12:09:46.533Z">
+<meta property="og:updated_time" content="2020-03-23T14:36:55.728Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;zhouhongh.github.io&#x2F;2020&#x2F;03&#x2F;19&#x2F;%E5%8A%A8%E4%BD%9C%E5%85%B3%E7%B3%BB%E8%B0%83%E7%A0%94&#x2F;bayes-action.png">
 
@@ -229,7 +229,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-03-22 20:09:46" itemprop="dateModified" datetime="2020-03-22T20:09:46+08:00">2020-03-22</time>
+                <time title="修改时间：2020-03-23 22:36:55" itemprop="dateModified" datetime="2020-03-23T22:36:55+08:00">2020-03-23</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -281,11 +281,23 @@
 <p>  <a href="https://github.com/lshiwjx/2s-AGCN" target="_blank" rel="noopener">https://github.com/lshiwjx/2s-AGCN</a>  </p>
 <p> 采用的是 spectral-based graph convolution networks，并且也使用了双流的网络结构，一个网络处理点（joint）的信息，另一个网络处理边 (bone) 的信息: </p>
 <p><img src="/2020/03/19/%E5%8A%A8%E4%BD%9C%E5%85%B3%E7%B3%BB%E8%B0%83%E7%A0%94/s_NLGCN2.png" alt="2s-nlgcn"></p>
-<h2 id="Actional-Structural-Graph-Convolutional-Networks-for-Skeleton-based-Action-Recognition"><a href="#Actional-Structural-Graph-Convolutional-Networks-for-Skeleton-based-Action-Recognition" class="headerlink" title="Actional-Structural Graph Convolutional Networks for Skeleton-based Action Recognition"></a>Actional-Structural Graph Convolutional Networks for Skeleton-based Action Recognition</h2><p>AS_GCN</p>
+<h2 id="Actional-Structural-Graph-Convolutional-Networks-for-Skeleton-based-Action-Recognition"><a href="#Actional-Structural-Graph-Convolutional-Networks-for-Skeleton-based-Action-Recognition" class="headerlink" title="Actional-Structural Graph Convolutional Networks for Skeleton-based Action Recognition"></a>Actional-Structural Graph Convolutional Networks for Skeleton-based Action Recognition</h2><p>AS-GCN</p>
+<p> <a href="https://github.com/limaosen0/AS-GCN" target="_blank" rel="noopener">https://github.com/limaosen0/AS-GCN</a>    （pytorch)</p>
 <p>CVPR 2019</p>
-<p>除了动作识别外，还可准确预测未来帧</p>
+<p>动作连接和结构连接：Action links &amp;  Structural links</p>
+<p>A-links捕获动作之间的潜在依赖关系；S-links表示更高阶的依存关系</p>
+<p>除了动作识别外，还可准确预测未来帧。（预测头和识别头同时训练，可以提高识别准确性）</p>
+<p>由许多AS-GCN blocks构成骨干网络——AS-GCN：提取高层语义表示，动作识别头、预测头完成具体任务。（预测头和识别头同时训练，可以提高识别准确性）</p>
 <p><img src="/2020/03/19/%E5%8A%A8%E4%BD%9C%E5%85%B3%E7%B3%BB%E8%B0%83%E7%A0%94/as-gcn.png" alt="as=gcn"></p>
-<p>批注：既然可以预测未来帧，那么就说明包含了动作信息，或许可以提取其特征表示，还原动作。</p>
+<h2 id="VERTEX-FEATURE-ENCODING-AND-HIERARCHICAL-TEMPORAL-MODELING-IN-A-SPATIAL-TEMPORAL-GRAPH-CONVOLUTIONAL-NETWORK-FOR-ACTION"><a href="#VERTEX-FEATURE-ENCODING-AND-HIERARCHICAL-TEMPORAL-MODELING-IN-A-SPATIAL-TEMPORAL-GRAPH-CONVOLUTIONAL-NETWORK-FOR-ACTION" class="headerlink" title="VERTEX FEATURE ENCODING AND HIERARCHICAL TEMPORAL MODELING IN A SPATIAL-TEMPORAL GRAPH CONVOLUTIONAL NETWORK FOR ACTION"></a>VERTEX FEATURE ENCODING AND HIERARCHICAL TEMPORAL MODELING IN A SPATIAL-TEMPORAL GRAPH CONVOLUTIONAL NETWORK FOR ACTION</h2><p>RECOGNITION<br>（时空图卷积网络中动作识别的顶点特征编码和分层时间建模）</p>
+<p>引入图顶点特征编码器（GVFE）和膨胀分层时间卷积网络（DH-TCN），对ST-GCN进行了扩展。</p>
+<ul>
+<li><p>GVFE将原骨架数据编码到新的特征空间中，DH-TCN捕获短期和长期依赖。</p>
+</li>
+<li><p>与sota对比优势主要在参数少，减少训练时间和内存。</p>
+</li>
+</ul>
+<h2 id="总结一下"><a href="#总结一下" class="headerlink" title="总结一下"></a>总结一下</h2><p>动作中的关节点关系可以分为时间上的和空间上的，物理连接的和语义连接的。针对分类任务使用GCN已经可以达到较高的准确度。难点在于还原动作。希望达到如果要对一个动作进行建模，输入参数就可以可以还原动作，例如想做出拍手的动作，给定拍手的参数就可以使各个关节点协同运动形成拍手运动。涉及到的问题是该参数如何既准确表征动作的分类，还要能够形成连续的动作帧。由于动作本身具有不同的样子，例如拍手，从不同角度看样子就完全不一样，动作的幅度快慢也不一样。首先学习一个标准的动作表达方式，再泛化到更多姿态的该动作应该是一个比较容易实现的方式。例如AS-GCN+贝叶斯推断。</p>
 
     </div>
 
@@ -348,7 +360,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Bayesian-Graph-Convolution-LSTM-for-Skeleton-Based-Action-Recognition"><span class="nav-number">1.</span> <span class="nav-text">Bayesian Graph Convolution LSTM for Skeleton Based Action Recognition</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spatial-temporal-graph-convolutional-networks-for-skeleton-based-action-recognition"><span class="nav-number">2.</span> <span class="nav-text">Spatial temporal graph convolutional networks for skeleton-based action recognition</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Deep-Progressive-Reinforcement-Learning-for-Skeleton-based-Action-Recognition"><span class="nav-number">3.</span> <span class="nav-text">Deep Progressive Reinforcement Learning for Skeleton-based Action Recognition</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Graph-Edge-Convolutional-Neural-Networks-for-Skeleton-Based-Action-Recognition"><span class="nav-number">4.</span> <span class="nav-text">Graph Edge Convolutional Neural Networks for Skeleton Based Action Recognition</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Optimized-Skeleton-based-Action-Recognition-via-Sparsified-Graph-Regression"><span class="nav-number">5.</span> <span class="nav-text">Optimized Skeleton-based Action Recognition via Sparsified Graph Regression</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Two-Stream-Adaptive-Graph-Convolutional-Networks-for-Skeleton-Based-Action-Recognition"><span class="nav-number">6.</span> <span class="nav-text">Two-Stream Adaptive Graph Convolutional Networks for Skeleton-Based Action Recognition</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Actional-Structural-Graph-Convolutional-Networks-for-Skeleton-based-Action-Recognition"><span class="nav-number">7.</span> <span class="nav-text">Actional-Structural Graph Convolutional Networks for Skeleton-based Action Recognition</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Bayesian-Graph-Convolution-LSTM-for-Skeleton-Based-Action-Recognition"><span class="nav-number">1.</span> <span class="nav-text">Bayesian Graph Convolution LSTM for Skeleton Based Action Recognition</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spatial-temporal-graph-convolutional-networks-for-skeleton-based-action-recognition"><span class="nav-number">2.</span> <span class="nav-text">Spatial temporal graph convolutional networks for skeleton-based action recognition</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Deep-Progressive-Reinforcement-Learning-for-Skeleton-based-Action-Recognition"><span class="nav-number">3.</span> <span class="nav-text">Deep Progressive Reinforcement Learning for Skeleton-based Action Recognition</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Graph-Edge-Convolutional-Neural-Networks-for-Skeleton-Based-Action-Recognition"><span class="nav-number">4.</span> <span class="nav-text">Graph Edge Convolutional Neural Networks for Skeleton Based Action Recognition</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Optimized-Skeleton-based-Action-Recognition-via-Sparsified-Graph-Regression"><span class="nav-number">5.</span> <span class="nav-text">Optimized Skeleton-based Action Recognition via Sparsified Graph Regression</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Two-Stream-Adaptive-Graph-Convolutional-Networks-for-Skeleton-Based-Action-Recognition"><span class="nav-number">6.</span> <span class="nav-text">Two-Stream Adaptive Graph Convolutional Networks for Skeleton-Based Action Recognition</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Actional-Structural-Graph-Convolutional-Networks-for-Skeleton-based-Action-Recognition"><span class="nav-number">7.</span> <span class="nav-text">Actional-Structural Graph Convolutional Networks for Skeleton-based Action Recognition</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#VERTEX-FEATURE-ENCODING-AND-HIERARCHICAL-TEMPORAL-MODELING-IN-A-SPATIAL-TEMPORAL-GRAPH-CONVOLUTIONAL-NETWORK-FOR-ACTION"><span class="nav-number">8.</span> <span class="nav-text">VERTEX FEATURE ENCODING AND HIERARCHICAL TEMPORAL MODELING IN A SPATIAL-TEMPORAL GRAPH CONVOLUTIONAL NETWORK FOR ACTION</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结一下"><span class="nav-number">9.</span> <span class="nav-text">总结一下</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
