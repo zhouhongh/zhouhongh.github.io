@@ -189,6 +189,419 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://zhouhongh.github.io/2020/04/22/Linux%E5%80%9F%E5%8A%A9SSR%E7%BF%BB%E5%A2%99/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="zhouhongh">
+      <meta itemprop="description" content="历尽千帆，仍是少年">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zhouhongh's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/04/22/Linux%E5%80%9F%E5%8A%A9SSR%E7%BF%BB%E5%A2%99/" class="post-title-link" itemprop="url">Linux借助SSR翻墙</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-04-22 22:58:53" itemprop="dateCreated datePublished" datetime="2020-04-22T22:58:53+08:00">2020-04-22</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-04-24 17:08:20" itemprop="dateModified" datetime="2020-04-24T17:08:20+08:00">2020-04-24</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/skills/" itemprop="url" rel="index">
+                    <span itemprop="name">skills</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <ul>
+<li><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>磕盐过程中需要下载海外的数据集，虽然我的win本能翻墙，但是数据集过于庞大，下在电脑里存不下，而且调用数据集跑程序还是得在服务器上，所以有了接下来的工作。<br>首先感谢一个做的很好的科学上网的github项目：<a href="https://github.com/Alvin9999/new-pac/wiki" target="_blank" rel="noopener">自由上网方法</a><br>这个项目提供了各平台的科学上网方法，但是对linux系统下的支持不是很好，直接用里面的linux翻墙方法不管用。经过尝试 ，使用博文<a href="https://samzong.me/2017/11/17/howto-use-ssr-on-linux-terminal/" target="_blank" rel="noopener">在Linux终端使用SSR服务</a>中的proxy方式做代理，成功实现linux下的科学上网。<br>我从头开始讲，Linux系统下的科学上网方式分为三步：</p></li></ul>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/04/22/Linux%E5%80%9F%E5%8A%A9SSR%E7%BF%BB%E5%A2%99/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://zhouhongh.github.io/2020/04/22/Linux%E4%BD%BF%E8%BF%9B%E7%A8%8B%E5%90%8E%E5%8F%B0%E6%89%A7%E8%A1%8C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="zhouhongh">
+      <meta itemprop="description" content="历尽千帆，仍是少年">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zhouhongh's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/04/22/Linux%E4%BD%BF%E8%BF%9B%E7%A8%8B%E5%90%8E%E5%8F%B0%E6%89%A7%E8%A1%8C/" class="post-title-link" itemprop="url">Linux使进程后台执行</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-04-22 22:54:32 / 修改时间：22:58:02" itemprop="dateCreated datePublished" datetime="2020-04-22T22:54:32+08:00">2020-04-22</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/skills/" itemprop="url" rel="index">
+                    <span itemprop="name">skills</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">nohup 命令 &amp;</span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">#同级目录会创建nohup.out存放输出信息，使用cat查看</span></span></span><br><span class="line">cat nohup.out</span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">#查看前n行</span></span></span><br><span class="line">head -n nohup.out</span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">#查看后n行</span></span></span><br><span class="line">tail -n nohup.out</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://zhouhongh.github.io/2020/04/14/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E8%B0%83%E7%A0%94/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="zhouhongh">
+      <meta itemprop="description" content="历尽千帆，仍是少年">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zhouhongh's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/04/14/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E8%B0%83%E7%A0%94/" class="post-title-link" itemprop="url">目标检测调研</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-04-14 10:24:40 / 修改时间：13:33:10" itemprop="dateCreated datePublished" datetime="2020-04-14T10:24:40+08:00">2020-04-14</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%B0%83%E7%A0%94/" itemprop="url" rel="index">
+                    <span itemprop="name">调研</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <ol>
+<li>任务</li>
+</ol>
+<p><img src="/2020/04/14/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E8%B0%83%E7%A0%94/1.jpg" alt="task"></p>
+<p> 目标检测即找出图像中所有感兴趣的物体，包含物体定位和物体分类两个子任务，同时确定物体的类别和位置。 </p>
+<ol start="2">
+<li>传统方法</li>
+</ol>
+<p>​        传统目标检测的方法一般分为三个阶段:首先在给定的图像上选择一些候选的区域，然 后对这些区域提取特征，最后使用训练的分类器进行分类。 </p>
+<ul>
+<li>区域选择：定位目标， 最初采用滑动窗口进行遍历，需要不同尺度和长宽比的窗口，时间复杂度太高，冗余窗口过多。</li>
+<li>特征提取：常用特征有SIFT、HOG等</li>
+<li>分类：分类器主要有SVM、AdaBoost等</li>
+</ul>
+<ol start="3">
+<li><p>算法概述</p>
+<p>目标检测任务可分为两个关键的子任务：<strong>目标分类</strong>和<strong>目标定位</strong>。 </p>
+</li>
+</ol>
+<ul>
+<li><p>目标分类任务负责判断输入图像或所选择图像区域（Proposals）中是否有感兴趣类别的物体出现，输出一系列带分数的标签表明感兴趣类别的物体出现在输入图像或所选择图像区域（Proposals）中的<strong>可能性</strong> 。</p>
+</li>
+<li><p>目标定位任务负责确定输入图像或所选择图像区域（Proposals）中感兴趣类别的物体的位置和范围，输出物体的包围盒、或物体中心、或物体的闭合边界等，通常使用方形包围盒，即<strong>Bounding Box</strong>用来表示物体的位置信息 </p>
+<p>目前主流的目标检测算法主要是基于深度学习模型，大概可以分成两大类别 ：</p>
+</li>
+<li><p><strong>One-Stage</strong>目标检测算法 ： 这类检测算法不需要Region Proposal阶段，可以通过一个Stage直接产生物体的<strong>类别概率和位置坐标值</strong>，比较典型的算法有<code>YOLO</code>、<code>SSD</code>和<code>CornerNet</code> 。</p>
+</li>
+<li><p><strong>Two-Stage</strong>目标检测算法 ： 这类检测算法将检测问题划分为两个阶段，第一个阶段首先产生候选区域（Region Proposals），包含目标大概的位置信息，然后第二个阶段对候选区域进行<strong>分类和位置精修</strong> 。 这类算法的典型代表有<code>R-CNN</code>，<code>Fast R-CNN</code>，<code>Faster R-CNN</code>等 </p>
+</li>
+</ul>
+<ol start="4">
+<li>性能指标</li>
+</ol>
+<ul>
+<li>准确度：物体定位和分类准确度</li>
+</ul>
+<p>mAP: mean average precision. 首先是一个类别内，求平均精确度（Average Precision），然后对所有类别的平均精确度再求平均（mean Average Precision） </p>
+<p>IOU: IOU表示了bounding box 与 ground truth 的重叠度，如下图所示。 就是矩形框A、B的重叠面积占A、B并集的面积比例。 </p>
+<p><img src="/2020/04/14/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E8%B0%83%E7%A0%94/2.jpg" alt="iou"></p>
+<ul>
+<li>速度</li>
+</ul>
+<p>FPS： 1秒内识别的图像数（帧数） </p>
+<p>一般而言Two-Stage 算法准确度上有优势，One-Stage算法速度上有优势。但是随着发展，二者都在改进。</p>
+<ol start="5">
+<li>算法对比</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>SSD</th>
+<th>YOLO-v3</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Feature extractor</td>
+<td>VGG19(有改写)</td>
+<td>Darknet-53</td>
+</tr>
+<tr>
+<td>Input</td>
+<td>resize original image to fixed size</td>
+<td>Random multi-scale input</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>YOLO-v3比SSD准确性和速度都好，Faster-RCNN还是比较慢。</p>
+<p>根据YOLOv3论文中的话： Darknet-53比ResNet-101性能更好而且要快1.5倍。Darknet-53性能与ResNet-152相近，但是要比它快2倍。  YOLOv3能在22毫秒内处理完一张320×320的输入图片，并取得28.2mAP的成绩。精度逼近SSD321，但速度却较其快了3倍 </p>
+<p>准确率：</p>
+<p><img src="/2020/04/14/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E8%B0%83%E7%A0%94/%E5%87%86%E7%A1%AE%E7%8E%87.png" alt="map&amp;time"></p>
+<p>时间：</p>
+<p><img src="/2020/04/14/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E8%B0%83%E7%A0%94/%E6%97%B6%E9%97%B4.png" alt="time"></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://zhouhongh.github.io/2020/03/31/skeleton-based-action-relation/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="zhouhongh">
+      <meta itemprop="description" content="历尽千帆，仍是少年">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zhouhongh's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/03/31/skeleton-based-action-relation/" class="post-title-link" itemprop="url">skeleton-based action relation</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-03-31 14:43:52" itemprop="dateCreated datePublished" datetime="2020-03-31T14:43:52+08:00">2020-03-31</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-04-10 09:45:40" itemprop="dateModified" datetime="2020-04-10T09:45:40+08:00">2020-04-10</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%B0%83%E7%A0%94/" itemprop="url" rel="index">
+                    <span itemprop="name">调研</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="Dynamic-Multiscale-Graph-Neural-Networks-for-3D-Skeleton-Based-Human-Motion-Prediction"><a href="#Dynamic-Multiscale-Graph-Neural-Networks-for-3D-Skeleton-Based-Human-Motion-Prediction" class="headerlink" title="Dynamic Multiscale Graph Neural Networks for 3D Skeleton-Based Human Motion Prediction"></a>Dynamic Multiscale Graph Neural Networks for 3D Skeleton-Based Human Motion Prediction</h2><p>和AS-GCN同一个作者.</p>
+<p>motion prediction相关研究:</p>
+<h3 id="deep-network-methods："><a href="#deep-network-methods：" class="headerlink" title="deep network methods："></a>deep network methods：</h3><p>Recurrent network models for human dynamics.   (2015 ICCV)</p>
+<p>Deep learning on spatio-temporal graphs.  (CVPR2016)</p>
+<p>On human motion prediction using recurrent neural networks.  (CVPR 2017)</p>
+<p>Deep representation learning for human motion prediction and classification.  (CVPR 2017)</p>
+<p>Adversarial geometry-aware human motion prediction  (ECCV 2018)</p>
+<p>Hp-gan: Probabilistic 3d human motion prediction via gan  (CVPR 2018)</p>
+<p>  Learning human motion models for long-term predictions  (on CoRR 2017)</p>
+<p>  Action-agnostic human pose forecasting  (on CoRR 2018)</p>
+<p>  Human motion prediction via learning local structure representations and temporal dependencies.  (AAAI 2019)</p>
+<p>  A neural temporal model for human motion prediction  (CVPR 2019)</p>
+<p>  Quaternet: A quaternion-based recurrent model for human motion  (BMVC 2018)</p>
+<p>  <strong><em>Spatio-temporal manifold learning for human motions via long-horizon modeling  (TVCG 2019)</em></strong></p>
+<p>  <strong><em>Learning trajectory dependencies for human motion prediction  (ICCV 2019)</em></strong></p>
+<h3 id="conventionnal-state-based-methods"><a href="#conventionnal-state-based-methods" class="headerlink" title="conventionnal state-based methods:"></a>conventionnal state-based methods:</h3><p>隐马尔可夫模型,高斯过程,随机森林、受限玻尔兹曼机</p>
+<p>Efficient nonlinear markov models for human motion  (CVPR 2014)</p>
+<p>  Gaussian process dynamical models  (NeurIPS 2006)</p>
+<p>  Modeling human motion using binary latent variables  (NeurIPS 2007)</p>
+<p>  Factored conditional restricted Boltzmann machines for modeling motion style  (ICML 2009)</p>
+<p>  The recurrent temporal restricted boltzmann machine  (NeurIPS 2009)</p>
+<p>大部分方法没有利用到不同身体成分之间的关系或约束.</p>
+<h2 id="DMGNN"><a href="#DMGNN" class="headerlink" title="DMGNN"></a>DMGNN</h2><p>和AS-GCN同一批人</p>
+<p><img src="/2020/03/31/skeleton-based-action-relation/C:%5CUsers%5C%E5%91%A8%E6%B4%AA%E5%BC%98%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1585650093646.png" alt="1585650093646"></p>
+<p>多尺度图 单尺度特征与特征融合</p>
+<p><img src="/2020/03/31/skeleton-based-action-relation/1.png" alt="DMGNN"></p>
+<p>预测误差接近SOTA, 预测时间大幅度减少</p>
+<p>涉及的时间尺度都比较短:400ms(短期) 1000ms(长期)</p>
+<p>SS-GCB:单尺度图卷积块</p>
+<p><strong>CS-FB：跨尺度融合块</strong> </p>
+<p>差分算子：诸如速度和加速度之类的运动状态具有重要的动力。 为了使用它们，作者提出了一个差分算子来计算输入序列的高阶差分</p>
+<h2 id="Learning-Diverse-Stochastic-Human-Action-Generators-by-Learning-Smooth-Latent-Transitions"><a href="#Learning-Diverse-Stochastic-Human-Action-Generators-by-Learning-Smooth-Latent-Transitions" class="headerlink" title="Learning Diverse Stochastic Human-Action Generators by Learning Smooth Latent Transitions"></a>Learning Diverse Stochastic Human-Action Generators by Learning Smooth Latent Transitions</h2><p>这篇实现动作生成和动作分类的双任务</p>
+<p>由于自然场景的复杂性和高维度性，直接从头开始生成人类动作尤其具有挑战性。<br> 一个有前途的解决方法是，首先生成基于骨架的动作序列，然后根据该自然序列进行渲染，以使其易于处理。 因此，本文重点介绍基于骨架的动作序列生成</p>
+<p>基于骨骼的人类动作生成可分为<strong>动作合成</strong>（也称为生成）（Kovar，Gleicher和Pighin 2002）和<strong>预测</strong>。 动作合成是指从头开始以可控制的标签信息合成整个动作序列。 而动作预测是指在给定一部分种子帧的情况下预测剩余的动作姿势。</p>
+<p>模型是一个双向生成对抗网络</p>
+<p>从噪声中生成动作序列 不仅可以生成出现过的类的动作，还可以生成看不见的混合类的动作。</p>
+<h2 id="Markov-Decision-Process-for-Video-Generation"><a href="#Markov-Decision-Process-for-Video-Generation" class="headerlink" title="Markov Decision Process for Video Generation"></a>Markov Decision Process for Video Generation</h2><p>对MoCoGAN的优化,在鉴别器中加入对未来时间的考虑,使之符合MDP的框架,提出了视频质量的新的衡量指标:t-DSSIM和t-PSNR</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://zhouhongh.github.io/2020/03/28/AS-GCN%E7%9A%84AIM%E6%A8%A1%E5%9D%97%E8%A7%A3%E8%AF%BB/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -214,7 +627,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-03-28 18:53:14 / 修改时间：21:09:26" itemprop="dateCreated datePublished" datetime="2020-03-28T18:53:14+08:00">2020-03-28</time>
+              <time title="创建时间：2020-03-28 18:53:14 / 修改时间：21:34:07" itemprop="dateCreated datePublished" datetime="2020-03-28T18:53:14+08:00">2020-03-28</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -240,7 +653,7 @@
 
       
           <h2 id="AIM结构"><a href="#AIM结构" class="headerlink" title="AIM结构"></a>AIM结构</h2><p><img src="/2020/03/28/AS-GCN%E7%9A%84AIM%E6%A8%A1%E5%9D%97%E8%A7%A3%E8%AF%BB/%E7%BB%93%E6%9E%84.png" alt="aim"></p>
-<p>encoder input:关节特征</p>
+<p>encoder input:关节点坐标</p>
 <p>encoder output：A-links</p>
 <p>decoder input: A-links &amp; 当前帧的关节点坐标</p>
 <p>decoder output:下一帧的关节点坐标</p>
@@ -714,316 +1127,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://zhouhongh.github.io/2020/02/17/pycharm%E8%BF%9C%E7%A8%8B%E6%8E%A7%E5%88%B6%E5%8F%B0%E4%B9%B1%E7%A0%81/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="zhouhongh">
-      <meta itemprop="description" content="历尽千帆，仍是少年">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="zhouhongh's blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/02/17/pycharm%E8%BF%9C%E7%A8%8B%E6%8E%A7%E5%88%B6%E5%8F%B0%E4%B9%B1%E7%A0%81/" class="post-title-link" itemprop="url">pycharm远程控制台乱码</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-02-17 18:16:24 / 修改时间：18:25:55" itemprop="dateCreated datePublished" datetime="2020-02-17T18:16:24+08:00">2020-02-17</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/skills/" itemprop="url" rel="index">
-                    <span itemprop="name">skills</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="Pycharm-远程访问服务器终端"><a href="#Pycharm-远程访问服务器终端" class="headerlink" title="Pycharm 远程访问服务器终端"></a>Pycharm 远程访问服务器终端</h2><p> 点击“Tools”-&gt;“Start SSH session…”，选择对应服务器即可。 </p>
-<h2 id="远程执行服务器代码-控制台输出乱码问题"><a href="#远程执行服务器代码-控制台输出乱码问题" class="headerlink" title="远程执行服务器代码 控制台输出乱码问题"></a>远程执行服务器代码 控制台输出乱码问题</h2><p>第一步：设置本地环境变量</p>
-<ul>
-<li>修改pycharm.exe.vmoptions文件，添加<code>-Dfile.encoding=UTF-8</code>，将本地环境设置为UTF-8</li>
-</ul>
-<p>第二步：设置 File Encoding</p>
-<ul>
-<li>File–&gt;settings–&gt;File Encoding–&gt; IDE Encodings: utf-8, Project Encodings: utf-8, Default Encoding for properties files: utf-8</li>
-</ul>
-<p>第三步： 设置 SSH Terminal 选项 </p>
-<ul>
-<li>File –&gt; settings –&gt; SSH Terminal –&gt; Deployment server: 此处是你所使用的环境， Default encoding: utf-8</li>
-</ul>
-<p>参考博客： <a href="https://www.cnblogs.com/liyaobin/p/10241198.html" target="_blank" rel="noopener">https://www.cnblogs.com/liyaobin/p/10241198.html</a> </p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://zhouhongh.github.io/2020/02/17/html%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="zhouhongh">
-      <meta itemprop="description" content="历尽千帆，仍是少年">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="zhouhongh's blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/02/17/html%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81/" class="post-title-link" itemprop="url">html中文乱码</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-02-17 16:54:31" itemprop="dateCreated datePublished" datetime="2020-02-17T16:54:31+08:00">2020-02-17</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-02-19 14:42:12" itemprop="dateModified" datetime="2020-02-19T14:42:12+08:00">2020-02-19</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/skills/" itemprop="url" rel="index">
-                    <span itemprop="name">skills</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>遇到乱码 在html文件前加入：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"Content-Type"</span> <span class="attr">content</span>=<span class="string">"text/html; charset=utf-8"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
-<p>另：实测插入图片位置的对齐问题，edge浏览器更改align参数无效，Google有效。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://zhouhongh.github.io/2020/02/16/Face-Occlusion-Detect-%E6%B5%8B%E8%AF%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="zhouhongh">
-      <meta itemprop="description" content="历尽千帆，仍是少年">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="zhouhongh's blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/02/16/Face-Occlusion-Detect-%E6%B5%8B%E8%AF%95/" class="post-title-link" itemprop="url">Face Occlusion Detect 测试</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-02-16 12:05:52 / 修改时间：14:26:46" itemprop="dateCreated datePublished" datetime="2020-02-16T12:05:52+08:00">2020-02-16</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%B5%8B%E8%AF%95/" itemprop="url" rel="index">
-                    <span itemprop="name">测试</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>运行测试人脸遮挡检测项目： <a href="https://github.com/Oreobird/Face-Occlusion-Detect" target="_blank" rel="noopener">https://github.com/Oreobird/Face-Occlusion-Detect</a> </p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/02/16/Face-Occlusion-Detect-%E6%B5%8B%E8%AF%95/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://zhouhongh.github.io/2020/02/13/FaceQ%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="zhouhongh">
-      <meta itemprop="description" content="历尽千帆，仍是少年">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="zhouhongh's blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/02/13/FaceQ%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">FaceQ论文笔记</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-02-13 15:36:19 / 修改时间：16:45:40" itemprop="dateCreated datePublished" datetime="2020-02-13T15:36:19+08:00">2020-02-13</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index">
-                    <span itemprop="name">笔记</span>
-                  </a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>人脸质量评估标准框架：BioLab-ICAO   评估人脸图像是否符合ISO/IEC 19794-5标准的一个基准。</p>
-<p>模型基于  resnet-50</p>
-<p>数据库  VGGFace2（使用BioLab-ICAO基准标记）</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1074,7 +1177,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">24</span>
+          <span class="site-state-item-count">28</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1087,7 +1190,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-count">20</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

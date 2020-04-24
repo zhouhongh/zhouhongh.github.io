@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="alternate" href="/atom.xml" title="zhouhongh's blog" type="application/atom+xml">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.5.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="Dynamic Multiscale Graph Neural Networks for 3D Skeleton-Based Human Motion Prediction和AS-GCN同一个作者. motion prediction相关研究: deep network methods：Recurrent network models for human dynamics.   (2015 ICC">
+<meta name="keywords" content="关系模型">
+<meta property="og:type" content="article">
+<meta property="og:title" content="skeleton-based action relation">
+<meta property="og:url" content="https:&#x2F;&#x2F;zhouhongh.github.io&#x2F;2020&#x2F;03&#x2F;31&#x2F;skeleton-based-action-relation&#x2F;index.html">
+<meta property="og:site_name" content="zhouhongh&#39;s blog">
+<meta property="og:description" content="Dynamic Multiscale Graph Neural Networks for 3D Skeleton-Based Human Motion Prediction和AS-GCN同一个作者. motion prediction相关研究: deep network methods：Recurrent network models for human dynamics.   (2015 ICC">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https:&#x2F;&#x2F;zhouhongh.github.io&#x2F;2020&#x2F;03&#x2F;31&#x2F;skeleton-based-action-relation&#x2F;C:%5CUsers%5C%E5%91%A8%E6%B4%AA%E5%BC%98%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1585650093646.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;zhouhongh.github.io&#x2F;2020&#x2F;03&#x2F;31&#x2F;skeleton-based-action-relation&#x2F;1.png">
+<meta property="og:updated_time" content="2020-04-10T01:45:40.251Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;zhouhongh.github.io&#x2F;2020&#x2F;03&#x2F;31&#x2F;skeleton-based-action-relation&#x2F;C:%5CUsers%5C%E5%91%A8%E6%B4%AA%E5%BC%98%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1585650093646.png">
+
+<link rel="canonical" href="https://zhouhongh.github.io/2020/03/31/skeleton-based-action-relation/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>skeleton-based action relation | zhouhongh's blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">zhouhongh's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">记录成长的足迹</p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://zhouhongh.github.io/2020/03/31/skeleton-based-action-relation/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="zhouhongh">
+      <meta itemprop="description" content="历尽千帆，仍是少年">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zhouhongh's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          skeleton-based action relation
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-03-31 14:43:52" itemprop="dateCreated datePublished" datetime="2020-03-31T14:43:52+08:00">2020-03-31</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-04-10 09:45:40" itemprop="dateModified" datetime="2020-04-10T09:45:40+08:00">2020-04-10</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%B0%83%E7%A0%94/" itemprop="url" rel="index">
+                    <span itemprop="name">调研</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="Dynamic-Multiscale-Graph-Neural-Networks-for-3D-Skeleton-Based-Human-Motion-Prediction"><a href="#Dynamic-Multiscale-Graph-Neural-Networks-for-3D-Skeleton-Based-Human-Motion-Prediction" class="headerlink" title="Dynamic Multiscale Graph Neural Networks for 3D Skeleton-Based Human Motion Prediction"></a>Dynamic Multiscale Graph Neural Networks for 3D Skeleton-Based Human Motion Prediction</h2><p>和AS-GCN同一个作者.</p>
+<p>motion prediction相关研究:</p>
+<h3 id="deep-network-methods："><a href="#deep-network-methods：" class="headerlink" title="deep network methods："></a>deep network methods：</h3><p>Recurrent network models for human dynamics.   (2015 ICCV)</p>
+<p>Deep learning on spatio-temporal graphs.  (CVPR2016)</p>
+<p>On human motion prediction using recurrent neural networks.  (CVPR 2017)</p>
+<p>Deep representation learning for human motion prediction and classification.  (CVPR 2017)</p>
+<p>Adversarial geometry-aware human motion prediction  (ECCV 2018)</p>
+<p>Hp-gan: Probabilistic 3d human motion prediction via gan  (CVPR 2018)</p>
+<p>  Learning human motion models for long-term predictions  (on CoRR 2017)</p>
+<p>  Action-agnostic human pose forecasting  (on CoRR 2018)</p>
+<p>  Human motion prediction via learning local structure representations and temporal dependencies.  (AAAI 2019)</p>
+<p>  A neural temporal model for human motion prediction  (CVPR 2019)</p>
+<p>  Quaternet: A quaternion-based recurrent model for human motion  (BMVC 2018)</p>
+<p>  <strong><em>Spatio-temporal manifold learning for human motions via long-horizon modeling  (TVCG 2019)</em></strong></p>
+<p>  <strong><em>Learning trajectory dependencies for human motion prediction  (ICCV 2019)</em></strong></p>
+<h3 id="conventionnal-state-based-methods"><a href="#conventionnal-state-based-methods" class="headerlink" title="conventionnal state-based methods:"></a>conventionnal state-based methods:</h3><p>隐马尔可夫模型,高斯过程,随机森林、受限玻尔兹曼机</p>
+<p>Efficient nonlinear markov models for human motion  (CVPR 2014)</p>
+<p>  Gaussian process dynamical models  (NeurIPS 2006)</p>
+<p>  Modeling human motion using binary latent variables  (NeurIPS 2007)</p>
+<p>  Factored conditional restricted Boltzmann machines for modeling motion style  (ICML 2009)</p>
+<p>  The recurrent temporal restricted boltzmann machine  (NeurIPS 2009)</p>
+<p>大部分方法没有利用到不同身体成分之间的关系或约束.</p>
+<h2 id="DMGNN"><a href="#DMGNN" class="headerlink" title="DMGNN"></a>DMGNN</h2><p>和AS-GCN同一批人</p>
+<p><img src="/2020/03/31/skeleton-based-action-relation/C:%5CUsers%5C%E5%91%A8%E6%B4%AA%E5%BC%98%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1585650093646.png" alt="1585650093646"></p>
+<p>多尺度图 单尺度特征与特征融合</p>
+<p><img src="/2020/03/31/skeleton-based-action-relation/1.png" alt="DMGNN"></p>
+<p>预测误差接近SOTA, 预测时间大幅度减少</p>
+<p>涉及的时间尺度都比较短:400ms(短期) 1000ms(长期)</p>
+<p>SS-GCB:单尺度图卷积块</p>
+<p><strong>CS-FB：跨尺度融合块</strong> </p>
+<p>差分算子：诸如速度和加速度之类的运动状态具有重要的动力。 为了使用它们，作者提出了一个差分算子来计算输入序列的高阶差分</p>
+<h2 id="Learning-Diverse-Stochastic-Human-Action-Generators-by-Learning-Smooth-Latent-Transitions"><a href="#Learning-Diverse-Stochastic-Human-Action-Generators-by-Learning-Smooth-Latent-Transitions" class="headerlink" title="Learning Diverse Stochastic Human-Action Generators by Learning Smooth Latent Transitions"></a>Learning Diverse Stochastic Human-Action Generators by Learning Smooth Latent Transitions</h2><p>这篇实现动作生成和动作分类的双任务</p>
+<p>由于自然场景的复杂性和高维度性，直接从头开始生成人类动作尤其具有挑战性。<br> 一个有前途的解决方法是，首先生成基于骨架的动作序列，然后根据该自然序列进行渲染，以使其易于处理。 因此，本文重点介绍基于骨架的动作序列生成</p>
+<p>基于骨骼的人类动作生成可分为<strong>动作合成</strong>（也称为生成）（Kovar，Gleicher和Pighin 2002）和<strong>预测</strong>。 动作合成是指从头开始以可控制的标签信息合成整个动作序列。 而动作预测是指在给定一部分种子帧的情况下预测剩余的动作姿势。</p>
+<p>模型是一个双向生成对抗网络</p>
+<p>从噪声中生成动作序列 不仅可以生成出现过的类的动作，还可以生成看不见的混合类的动作。</p>
+<h2 id="Markov-Decision-Process-for-Video-Generation"><a href="#Markov-Decision-Process-for-Video-Generation" class="headerlink" title="Markov Decision Process for Video Generation"></a>Markov Decision Process for Video Generation</h2><p>对MoCoGAN的优化,在鉴别器中加入对未来时间的考虑,使之符合MDP的框架,提出了视频质量的新的衡量指标:t-DSSIM和t-PSNR</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%9E%8B/" rel="tag"># 关系模型</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/2020/03/28/AS-GCN%E7%9A%84AIM%E6%A8%A1%E5%9D%97%E8%A7%A3%E8%AF%BB/" rel="next" title="AS-GCN的AIM模块解读">
+                  <i class="fa fa-chevron-left"></i> AS-GCN的AIM模块解读
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+                <a href="/2020/04/14/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E8%B0%83%E7%A0%94/" rel="prev" title="目标检测调研">
+                  目标检测调研 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Dynamic-Multiscale-Graph-Neural-Networks-for-3D-Skeleton-Based-Human-Motion-Prediction"><span class="nav-number">1.</span> <span class="nav-text">Dynamic Multiscale Graph Neural Networks for 3D Skeleton-Based Human Motion Prediction</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#deep-network-methods："><span class="nav-number">1.1.</span> <span class="nav-text">deep network methods：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#conventionnal-state-based-methods"><span class="nav-number">1.2.</span> <span class="nav-text">conventionnal state-based methods:</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DMGNN"><span class="nav-number">2.</span> <span class="nav-text">DMGNN</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Learning-Diverse-Stochastic-Human-Action-Generators-by-Learning-Smooth-Latent-Transitions"><span class="nav-number">3.</span> <span class="nav-text">Learning Diverse Stochastic Human-Action Generators by Learning Smooth Latent Transitions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Markov-Decision-Process-for-Video-Generation"><span class="nav-number">4.</span> <span class="nav-text">Markov Decision Process for Video Generation</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="zhouhongh"
+    src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">zhouhongh</p>
+  <div class="site-description" itemprop="description">历尽千帆，仍是少年</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">28</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="feed-link motion-element">
+    <a href="/atom.xml" rel="alternate">
+      <i class="fa fa-rss"></i>RSS
+    </a>
+  </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/zhouhongh" title="GitHub &amp;rarr; https:&#x2F;&#x2F;github.com&#x2F;zhouhongh" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/zhh_hhz" title="CSDN &amp;rarr; https:&#x2F;&#x2F;blog.csdn.net&#x2F;zhh_hhz" rel="noopener" target="_blank"><i class="fa fa-fw fa-crosshairs"></i>CSDN</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zhouhongh</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.0.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.5.0
+  </div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

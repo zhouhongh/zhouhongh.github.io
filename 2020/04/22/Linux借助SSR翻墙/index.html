@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="alternate" href="/atom.xml" title="zhouhongh's blog" type="application/atom+xml">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.5.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="前言磕盐过程中需要下载海外的数据集，虽然我的win本能翻墙，但是数据集过于庞大，下在电脑里存不下，而且调用数据集跑程序还是得在服务器上，所以有了接下来的工作。首先感谢一个做的很好的科学上网的github项目：自由上网方法这个项目提供了各平台的科学上网方法，但是对linux系统下的支持不是很好，直接用里面的linux翻墙方法不管用。经过尝试 ，使用博文在Linux终端使用SSR服务中的proxy方">
+<meta name="keywords" content="Linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux借助SSR翻墙">
+<meta property="og:url" content="https:&#x2F;&#x2F;zhouhongh.github.io&#x2F;2020&#x2F;04&#x2F;22&#x2F;Linux%E5%80%9F%E5%8A%A9SSR%E7%BF%BB%E5%A2%99&#x2F;index.html">
+<meta property="og:site_name" content="zhouhongh&#39;s blog">
+<meta property="og:description" content="前言磕盐过程中需要下载海外的数据集，虽然我的win本能翻墙，但是数据集过于庞大，下在电脑里存不下，而且调用数据集跑程序还是得在服务器上，所以有了接下来的工作。首先感谢一个做的很好的科学上网的github项目：自由上网方法这个项目提供了各平台的科学上网方法，但是对linux系统下的支持不是很好，直接用里面的linux翻墙方法不管用。经过尝试 ，使用博文在Linux终端使用SSR服务中的proxy方">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https:&#x2F;&#x2F;zhouhongh.github.io&#x2F;2020&#x2F;04&#x2F;22&#x2F;Linux%E5%80%9F%E5%8A%A9SSR%E7%BF%BB%E5%A2%99&#x2F;ssr_config.jpg">
+<meta property="og:updated_time" content="2020-04-24T09:08:20.369Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;zhouhongh.github.io&#x2F;2020&#x2F;04&#x2F;22&#x2F;Linux%E5%80%9F%E5%8A%A9SSR%E7%BF%BB%E5%A2%99&#x2F;ssr_config.jpg">
+
+<link rel="canonical" href="https://zhouhongh.github.io/2020/04/22/Linux%E5%80%9F%E5%8A%A9SSR%E7%BF%BB%E5%A2%99/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>Linux借助SSR翻墙 | zhouhongh's blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">zhouhongh's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">记录成长的足迹</p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://zhouhongh.github.io/2020/04/22/Linux%E5%80%9F%E5%8A%A9SSR%E7%BF%BB%E5%A2%99/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="zhouhongh">
+      <meta itemprop="description" content="历尽千帆，仍是少年">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zhouhongh's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Linux借助SSR翻墙
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-04-22 22:58:53" itemprop="dateCreated datePublished" datetime="2020-04-22T22:58:53+08:00">2020-04-22</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-04-24 17:08:20" itemprop="dateModified" datetime="2020-04-24T17:08:20+08:00">2020-04-24</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/skills/" itemprop="url" rel="index">
+                    <span itemprop="name">skills</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <ul>
+<li><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>磕盐过程中需要下载海外的数据集，虽然我的win本能翻墙，但是数据集过于庞大，下在电脑里存不下，而且调用数据集跑程序还是得在服务器上，所以有了接下来的工作。<br>首先感谢一个做的很好的科学上网的github项目：<a href="https://github.com/Alvin9999/new-pac/wiki" target="_blank" rel="noopener">自由上网方法</a><br>这个项目提供了各平台的科学上网方法，但是对linux系统下的支持不是很好，直接用里面的linux翻墙方法不管用。经过尝试 ，使用博文<a href="https://samzong.me/2017/11/17/howto-use-ssr-on-linux-terminal/" target="_blank" rel="noopener">在Linux终端使用SSR服务</a>中的proxy方式做代理，成功实现linux下的科学上网。<br>我从头开始讲，Linux系统下的科学上网方式分为三步：</p>
+<a id="more"></a>
+
+<h2 id="1-获得一个可以翻墙的SSR账号"><a href="#1-获得一个可以翻墙的SSR账号" class="headerlink" title="1 获得一个可以翻墙的SSR账号"></a>1 获得一个可以翻墙的SSR账号</h2><p>上文提到的github项目中有免费账号<a href="https://github.com/Alvin9999/new-pac/wiki/ss%E5%85%8D%E8%B4%B9%E8%B4%A6%E5%8F%B7" target="_blank" rel="noopener">ss免费账号</a>，但是可能效果不是很好，网速慢，经常被墙啥的。<br>我自己用的Vultr，买一个海外服务器，自己搭建VPS，3.5美元一个月，可以供多人使用。我主要参考这个<a href="https://github.com/Alvin9999/new-pac/wiki/%E8%87%AA%E5%BB%BAss%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%95%99%E7%A8%8B" target="_blank" rel="noopener">自建ss服务器教程</a>, 想使用Vultr自建的话，还可以参考这个<a href="https://www.vultryhw.cn/vultr/" target="_blank" rel="noopener">Vultr优惠网</a>，里面也有搭建教程，还有一些优惠攻略。<br>具体建设ss服务器的流程，<a href="https://github.com/Alvin9999/new-pac/wiki/%E8%87%AA%E5%BB%BAss%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%95%99%E7%A8%8B" target="_blank" rel="noopener">自建ss服务器教程</a>这里面写的很详细，我就不多说，按照里面说的一步步来就行，主要注意在买服务器的时候选择<strong>CentOS6</strong>系统比较好，这样不用管防火墙设置，而且可以使用锐速加速。笔者就是使用买的CentOS6.</p>
+<h2 id="2-在本地服务器上连接到SSR账号"><a href="#2-在本地服务器上连接到SSR账号" class="headerlink" title="2 在本地服务器上连接到SSR账号"></a>2 在本地服务器上连接到SSR账号</h2><p>这部分按照<a href="https://github.com/the0demiurge/CharlesScripts/blob/master/charles/bin/ssr" target="_blank" rel="noopener">Linux的ssr翻墙脚本</a>里面的注释里的步骤来就行。<br>1）把该脚本放到<code>$PATH</code>里面并加入可执行权限就行（比如说放到/usr/local/bin），一般来说放到/usr/local/bin就行，可以使用<code>echo $PATH</code>命令查看一下，确保这个目录在<code>$PATH</code>里面。注意这个脚本是没有后缀名的，就叫ssr。<br>2）输入 <code>ssr install</code>，自动安装ssr服务到 <code>$HOME/.local/share/shadowsocksr</code>目录下。<br>3）输入<code>ssr config</code>进行配置，如下<br><img src="/2020/04/22/Linux%E5%80%9F%E5%8A%A9SSR%E7%BF%BB%E5%A2%99/ssr_config.jpg" alt="ssr config"><br><code>sever</code>是你的ssr账号的地址，<code>sever_port</code>是ssr账号的端口，<code>local_adress</code>,<code>local_port</code>这两个如图设置为127.0.0.1和1080端口即可，<code>password</code>是你的ssr账号密码，<code>method</code>是加密方式,<code>protocol</code>协议，<code>obfs</code>混淆方式。以上这些如果你是像我一样从头建服务器，那么搭建海外SSR服务器的时候就会得到，记得记录下来。如果是用免费的SSR账号，也是会获得这些信息的。<br>使用ssr config命令编辑完这些信息后，ssr服务器就连上了（你可以使用<code>ssr stop</code>命令停止ssr服务，但是实测发现这个时候还不能科学上网。可以使用如下命令测试一下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 访问各大网站，如果都有网页源码输出说明代理没问题</span></span><br><span class="line">curl -sL www.baidu.com</span><br><span class="line">curl -sL www.google.com</span><br><span class="line">curl -sL www.google.com.hk</span><br><span class="line">curl -sL www.google.co.jp</span><br><span class="line">curl -sL www.youtube.com</span><br><span class="line">curl -sL mail.google.com</span><br><span class="line">curl -sL facebook.com</span><br><span class="line">curl -sL twitter.com</span><br><span class="line">curl -sL www.wikipedia.org</span><br></pre></td></tr></table></figure>
+<p>会发现这时是没有输出的。<br>这就需要第三步了~</p>
+<h2 id="3-Privoxy-配置"><a href="#3-Privoxy-配置" class="headerlink" title="3 Privoxy 配置"></a>3 Privoxy 配置</h2><p>首先，需要安装privoxy<br>CentOS</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum install -y epel-release</span><br><span class="line">yum install -y privoxy</span><br></pre></td></tr></table></figure>
+<p>Ubuntu</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt install -y privoxy</span><br></pre></td></tr></table></figure>
+<p>代理模式同其他平台上方式，将所有http/https请求走代理服务，如果需要全局代理的话按照如下操作即可（如果要使用PAC模式，参考原文<a href="https://samzong.me/2017/11/17/howto-use-ssr-on-linux-terminal/" target="_blank" rel="noopener">在Linux终端使用SSR服务</a>，可自行尝试）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 添加本地ssr服务到配置文件</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">'forward-socks5 / 127.0.0.1:1080 .'</span> &gt;&gt; /etc/privoxy/config</span><br><span class="line"></span><br><span class="line"><span class="comment"># Privoxy 默认监听端口是是8118</span></span><br><span class="line"><span class="built_in">export</span> http_proxy=http://127.0.0.1:8118</span><br><span class="line"><span class="built_in">export</span> https_proxy=http://127.0.0.1:8118</span><br><span class="line"><span class="built_in">export</span> no_proxy=localhost</span><br><span class="line"></span><br><span class="line"><span class="comment"># 启动服务</span></span><br><span class="line">systemctl start privoxy.service</span><br></pre></td></tr></table></figure>
+<p>这时再使用<code>curl -sL www.google.com</code>等命令测试，应该就可以得到网页源码了，翻墙成功！<br>但是注意，关闭shell后，就需要重新启动proxy服务，除了第一条添加本地配置文件不需要重复执行，后面四条都需要重新执行。这样未免不太方便，建议使用如下管理脚本<code>ssr_manager</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> Author Samzong.lu</span></span><br><span class="line"></span><br><span class="line">case $1 in</span><br><span class="line">	start)</span><br><span class="line">		ssr start &amp;&gt; /var/log/ssr-local.log</span><br><span class="line">		systemctl start privoxy.service</span><br><span class="line">		export http_proxy=http://127.0.0.1:8118</span><br><span class="line">		export https_proxy=http://127.0.0.1:8118</span><br><span class="line">		export no_proxy="localhost, ip.cn, chinaz.com"</span><br><span class="line">		;;</span><br><span class="line">	stop)</span><br><span class="line">		unset http_proxy https_proxy no_proxy</span><br><span class="line">		systemctl stop privoxy.service</span><br><span class="line">		ssr stop &amp;&gt; /var/log/ssr-log.log</span><br><span class="line">		;;</span><br><span class="line">	autostart)</span><br><span class="line">		echo "ssr start" &gt;&gt; /etc/rc.local</span><br><span class="line">		systemctl enable privoxy.service</span><br><span class="line">		echo "http_proxy=http://127.0.0.1:8118" &gt;&gt; /etc/bashrc</span><br><span class="line">		echo "https_proxy=http://127.0.0.1:8118" &gt;&gt; /etc/bashrc</span><br><span class="line">		echo "no_proxy='localhost, ip.cn, chinaz.com'" &gt;&gt; /etc/bashrc</span><br><span class="line">		;;</span><br><span class="line">	*)</span><br><span class="line">		echo "usage: source $0 start|stop|autostart"</span><br><span class="line">		exit 1</span><br><span class="line">		;;</span><br><span class="line">esac</span><br></pre></td></tr></table></figure>
+<p>使用方法：<br>1）使用代码编辑器新建一个文件将上述代码拷进去，然后保存为ssr_manger，注意没有后缀名。然后将这个脚本放到<code>/usr/local/bin</code>下，使用<code>chmod +x ssr_manager</code>给予权限。<br>这一步笔者遇到一个问题，就是文件是在win系统下建立然后上传到服务器中的，执行的时候会有换行符(^M )的错误，只需要在将文件传到服务器上后，使用命令<code>dos2unix ssr_manager</code>转换一下格式就行。<br>2）输入以下命令管理ssr和privoxy。（因为脚本中涉及到使用export添加环境变量，请务必在ssr_manager命令前加source，不然环境变量添加失败）</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 启动服务</span></span><br><span class="line">source ssr_manager start</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 关闭服务</span></span><br><span class="line">source ssr_manager stop </span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 添加开机自启动</span></span><br><span class="line">source ssr_manager autostart</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Linux/" rel="tag"># Linux</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/2020/04/22/Linux%E4%BD%BF%E8%BF%9B%E7%A8%8B%E5%90%8E%E5%8F%B0%E6%89%A7%E8%A1%8C/" rel="next" title="Linux使进程后台执行">
+                  <i class="fa fa-chevron-left"></i> Linux使进程后台执行
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-获得一个可以翻墙的SSR账号"><span class="nav-number">2.</span> <span class="nav-text">1 获得一个可以翻墙的SSR账号</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-在本地服务器上连接到SSR账号"><span class="nav-number">3.</span> <span class="nav-text">2 在本地服务器上连接到SSR账号</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Privoxy-配置"><span class="nav-number">4.</span> <span class="nav-text">3 Privoxy 配置</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="zhouhongh"
+    src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">zhouhongh</p>
+  <div class="site-description" itemprop="description">历尽千帆，仍是少年</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">28</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="feed-link motion-element">
+    <a href="/atom.xml" rel="alternate">
+      <i class="fa fa-rss"></i>RSS
+    </a>
+  </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/zhouhongh" title="GitHub &amp;rarr; https:&#x2F;&#x2F;github.com&#x2F;zhouhongh" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/zhh_hhz" title="CSDN &amp;rarr; https:&#x2F;&#x2F;blog.csdn.net&#x2F;zhh_hhz" rel="noopener" target="_blank"><i class="fa fa-fw fa-crosshairs"></i>CSDN</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zhouhongh</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.0.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.5.0
+  </div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
