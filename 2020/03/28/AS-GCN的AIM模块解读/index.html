@@ -51,13 +51,13 @@
   };
 </script>
 
-  <meta name="description" content="AIM结构 encoder input:关节点坐标 encoder output：A-links decoder input: A-links &amp;amp; 当前帧的关节点坐标 decoder output:下一帧的关节点坐标 formulaencoder C个A-link类型，n个关节点，A_i,j,c表示第i个和第j个关节点具备c类A-link类型的概率。上式的A即A-links. 输入x_i">
+  <meta name="description" content="AIM结构 encoder input:关节点坐标 encoder output：A-links decoder input: A-links &amp;amp; 当前帧的关节点坐标 decoder output:下一帧的关节点坐标">
 <meta name="keywords" content="GCN,关系模型">
 <meta property="og:type" content="article">
 <meta property="og:title" content="AS-GCN的AIM模块解读">
 <meta property="og:url" content="https:&#x2F;&#x2F;zhouhongh.github.io&#x2F;2020&#x2F;03&#x2F;28&#x2F;AS-GCN%E7%9A%84AIM%E6%A8%A1%E5%9D%97%E8%A7%A3%E8%AF%BB&#x2F;index.html">
 <meta property="og:site_name" content="zhouhongh&#39;s blog">
-<meta property="og:description" content="AIM结构 encoder input:关节点坐标 encoder output：A-links decoder input: A-links &amp;amp; 当前帧的关节点坐标 decoder output:下一帧的关节点坐标 formulaencoder C个A-link类型，n个关节点，A_i,j,c表示第i个和第j个关节点具备c类A-link类型的概率。上式的A即A-links. 输入x_i">
+<meta property="og:description" content="AIM结构 encoder input:关节点坐标 encoder output：A-links decoder input: A-links &amp;amp; 当前帧的关节点坐标 decoder output:下一帧的关节点坐标">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https:&#x2F;&#x2F;zhouhongh.github.io&#x2F;2020&#x2F;03&#x2F;28&#x2F;AS-GCN%E7%9A%84AIM%E6%A8%A1%E5%9D%97%E8%A7%A3%E8%AF%BB&#x2F;%E7%BB%93%E6%9E%84.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;zhouhongh.github.io&#x2F;2020&#x2F;03&#x2F;28&#x2F;AS-GCN%E7%9A%84AIM%E6%A8%A1%E5%9D%97%E8%A7%A3%E8%AF%BB&#x2F;2.png">
@@ -71,7 +71,7 @@
 <meta property="og:image" content="https:&#x2F;&#x2F;zhouhongh.github.io&#x2F;2020&#x2F;03&#x2F;28&#x2F;AS-GCN%E7%9A%84AIM%E6%A8%A1%E5%9D%97%E8%A7%A3%E8%AF%BB&#x2F;11.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;zhouhongh.github.io&#x2F;2020&#x2F;03&#x2F;28&#x2F;AS-GCN%E7%9A%84AIM%E6%A8%A1%E5%9D%97%E8%A7%A3%E8%AF%BB&#x2F;12.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;zhouhongh.github.io&#x2F;2020&#x2F;03&#x2F;28&#x2F;AS-GCN%E7%9A%84AIM%E6%A8%A1%E5%9D%97%E8%A7%A3%E8%AF%BB&#x2F;13.png">
-<meta property="og:updated_time" content="2020-03-28T13:34:07.535Z">
+<meta property="og:updated_time" content="2020-04-24T09:15:36.312Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;zhouhongh.github.io&#x2F;2020&#x2F;03&#x2F;28&#x2F;AS-GCN%E7%9A%84AIM%E6%A8%A1%E5%9D%97%E8%A7%A3%E8%AF%BB&#x2F;%E7%BB%93%E6%9E%84.png">
 
@@ -226,10 +226,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-03-28 18:53:14 / 修改时间：21:34:07" itemprop="dateCreated datePublished" datetime="2020-03-28T18:53:14+08:00">2020-03-28</time>
+              <time title="创建时间：2020-03-28 18:53:14" itemprop="dateCreated datePublished" datetime="2020-03-28T18:53:14+08:00">2020-03-28</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-04-24 17:15:36" itemprop="dateModified" datetime="2020-04-24T17:15:36+08:00">2020-04-24</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -258,6 +264,8 @@
 <p>encoder output：A-links</p>
 <p>decoder input: A-links &amp; 当前帧的关节点坐标</p>
 <p>decoder output:下一帧的关节点坐标</p>
+<a id="more"></a>
+
 <h2 id="formula"><a href="#formula" class="headerlink" title="formula"></a>formula</h2><h3 id="encoder"><a href="#encoder" class="headerlink" title="encoder"></a>encoder</h3><p><img src="/2020/03/28/AS-GCN%E7%9A%84AIM%E6%A8%A1%E5%9D%97%E8%A7%A3%E8%AF%BB/2.png" alt="aim"></p>
 <p>C个A-link类型，n个关节点，A_i,j,c表示第i个和第j个关节点具备c类A-link类型的概率。上式的A即A-links.</p>
 <p>输入x_i = vec(X_i,:,:)表示第i个关节点在所有帧上的坐标串联起来的特征。通过坐标得到link特征再得到link类型。为了有效更新link特征，这里涉及两种特征表示，一对关节点之间的特征Q_i,j（link特征）和一个关节点的单独特征p_i（joint特征），他们通过如下两个公式交替更新：</p>

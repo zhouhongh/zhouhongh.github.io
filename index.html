@@ -367,10 +367,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-04-14 10:24:40 / 修改时间：13:33:10" itemprop="dateCreated datePublished" datetime="2020-04-14T10:24:40+08:00">2020-04-14</time>
+              <time title="创建时间：2020-04-14 10:24:40" itemprop="dateCreated datePublished" datetime="2020-04-14T10:24:40+08:00">2020-04-14</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-04-24 17:15:17" itemprop="dateModified" datetime="2020-04-24T17:15:17+08:00">2020-04-24</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -399,79 +405,14 @@
 </ol>
 <p><img src="/2020/04/14/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E8%B0%83%E7%A0%94/1.jpg" alt="task"></p>
 <p> 目标检测即找出图像中所有感兴趣的物体，包含物体定位和物体分类两个子任务，同时确定物体的类别和位置。 </p>
-<ol start="2">
-<li>传统方法</li>
-</ol>
-<p>​        传统目标检测的方法一般分为三个阶段:首先在给定的图像上选择一些候选的区域，然 后对这些区域提取特征，最后使用训练的分类器进行分类。 </p>
-<ul>
-<li>区域选择：定位目标， 最初采用滑动窗口进行遍历，需要不同尺度和长宽比的窗口，时间复杂度太高，冗余窗口过多。</li>
-<li>特征提取：常用特征有SIFT、HOG等</li>
-<li>分类：分类器主要有SVM、AdaBoost等</li>
-</ul>
-<ol start="3">
-<li><p>算法概述</p>
-<p>目标检测任务可分为两个关键的子任务：<strong>目标分类</strong>和<strong>目标定位</strong>。 </p>
-</li>
-</ol>
-<ul>
-<li><p>目标分类任务负责判断输入图像或所选择图像区域（Proposals）中是否有感兴趣类别的物体出现，输出一系列带分数的标签表明感兴趣类别的物体出现在输入图像或所选择图像区域（Proposals）中的<strong>可能性</strong> 。</p>
-</li>
-<li><p>目标定位任务负责确定输入图像或所选择图像区域（Proposals）中感兴趣类别的物体的位置和范围，输出物体的包围盒、或物体中心、或物体的闭合边界等，通常使用方形包围盒，即<strong>Bounding Box</strong>用来表示物体的位置信息 </p>
-<p>目前主流的目标检测算法主要是基于深度学习模型，大概可以分成两大类别 ：</p>
-</li>
-<li><p><strong>One-Stage</strong>目标检测算法 ： 这类检测算法不需要Region Proposal阶段，可以通过一个Stage直接产生物体的<strong>类别概率和位置坐标值</strong>，比较典型的算法有<code>YOLO</code>、<code>SSD</code>和<code>CornerNet</code> 。</p>
-</li>
-<li><p><strong>Two-Stage</strong>目标检测算法 ： 这类检测算法将检测问题划分为两个阶段，第一个阶段首先产生候选区域（Region Proposals），包含目标大概的位置信息，然后第二个阶段对候选区域进行<strong>分类和位置精修</strong> 。 这类算法的典型代表有<code>R-CNN</code>，<code>Fast R-CNN</code>，<code>Faster R-CNN</code>等 </p>
-</li>
-</ul>
-<ol start="4">
-<li>性能指标</li>
-</ol>
-<ul>
-<li>准确度：物体定位和分类准确度</li>
-</ul>
-<p>mAP: mean average precision. 首先是一个类别内，求平均精确度（Average Precision），然后对所有类别的平均精确度再求平均（mean Average Precision） </p>
-<p>IOU: IOU表示了bounding box 与 ground truth 的重叠度，如下图所示。 就是矩形框A、B的重叠面积占A、B并集的面积比例。 </p>
-<p><img src="/2020/04/14/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E8%B0%83%E7%A0%94/2.jpg" alt="iou"></p>
-<ul>
-<li>速度</li>
-</ul>
-<p>FPS： 1秒内识别的图像数（帧数） </p>
-<p>一般而言Two-Stage 算法准确度上有优势，One-Stage算法速度上有优势。但是随着发展，二者都在改进。</p>
-<ol start="5">
-<li>算法对比</li>
-</ol>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>SSD</th>
-<th>YOLO-v3</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Feature extractor</td>
-<td>VGG19(有改写)</td>
-<td>Darknet-53</td>
-</tr>
-<tr>
-<td>Input</td>
-<td>resize original image to fixed size</td>
-<td>Random multi-scale input</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-<p>YOLO-v3比SSD准确性和速度都好，Faster-RCNN还是比较慢。</p>
-<p>根据YOLOv3论文中的话： Darknet-53比ResNet-101性能更好而且要快1.5倍。Darknet-53性能与ResNet-152相近，但是要比它快2倍。  YOLOv3能在22毫秒内处理完一张320×320的输入图片，并取得28.2mAP的成绩。精度逼近SSD321，但速度却较其快了3倍 </p>
-<p>准确率：</p>
-<p><img src="/2020/04/14/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E8%B0%83%E7%A0%94/%E5%87%86%E7%A1%AE%E7%8E%87.png" alt="map&amp;time"></p>
-<p>时间：</p>
-<p><img src="/2020/04/14/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E8%B0%83%E7%A0%94/%E6%97%B6%E9%97%B4.png" alt="time"></p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/04/14/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E8%B0%83%E7%A0%94/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -521,7 +462,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-04-10 09:45:40" itemprop="dateModified" datetime="2020-04-10T09:45:40+08:00">2020-04-10</time>
+                <time title="修改时间：2020-04-24 17:17:02" itemprop="dateModified" datetime="2020-04-24T17:17:02+08:00">2020-04-24</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -568,22 +509,14 @@
 <p>  Factored conditional restricted Boltzmann machines for modeling motion style  (ICML 2009)</p>
 <p>  The recurrent temporal restricted boltzmann machine  (NeurIPS 2009)</p>
 <p>大部分方法没有利用到不同身体成分之间的关系或约束.</p>
-<h2 id="DMGNN"><a href="#DMGNN" class="headerlink" title="DMGNN"></a>DMGNN</h2><p>和AS-GCN同一批人</p>
-<p><img src="/2020/03/31/skeleton-based-action-relation/C:%5CUsers%5C%E5%91%A8%E6%B4%AA%E5%BC%98%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1585650093646.png" alt="1585650093646"></p>
-<p>多尺度图 单尺度特征与特征融合</p>
-<p><img src="/2020/03/31/skeleton-based-action-relation/1.png" alt="DMGNN"></p>
-<p>预测误差接近SOTA, 预测时间大幅度减少</p>
-<p>涉及的时间尺度都比较短:400ms(短期) 1000ms(长期)</p>
-<p>SS-GCB:单尺度图卷积块</p>
-<p><strong>CS-FB：跨尺度融合块</strong> </p>
-<p>差分算子：诸如速度和加速度之类的运动状态具有重要的动力。 为了使用它们，作者提出了一个差分算子来计算输入序列的高阶差分</p>
-<h2 id="Learning-Diverse-Stochastic-Human-Action-Generators-by-Learning-Smooth-Latent-Transitions"><a href="#Learning-Diverse-Stochastic-Human-Action-Generators-by-Learning-Smooth-Latent-Transitions" class="headerlink" title="Learning Diverse Stochastic Human-Action Generators by Learning Smooth Latent Transitions"></a>Learning Diverse Stochastic Human-Action Generators by Learning Smooth Latent Transitions</h2><p>这篇实现动作生成和动作分类的双任务</p>
-<p>由于自然场景的复杂性和高维度性，直接从头开始生成人类动作尤其具有挑战性。<br> 一个有前途的解决方法是，首先生成基于骨架的动作序列，然后根据该自然序列进行渲染，以使其易于处理。 因此，本文重点介绍基于骨架的动作序列生成</p>
-<p>基于骨骼的人类动作生成可分为<strong>动作合成</strong>（也称为生成）（Kovar，Gleicher和Pighin 2002）和<strong>预测</strong>。 动作合成是指从头开始以可控制的标签信息合成整个动作序列。 而动作预测是指在给定一部分种子帧的情况下预测剩余的动作姿势。</p>
-<p>模型是一个双向生成对抗网络</p>
-<p>从噪声中生成动作序列 不仅可以生成出现过的类的动作，还可以生成看不见的混合类的动作。</p>
-<h2 id="Markov-Decision-Process-for-Video-Generation"><a href="#Markov-Decision-Process-for-Video-Generation" class="headerlink" title="Markov Decision Process for Video Generation"></a>Markov Decision Process for Video Generation</h2><p>对MoCoGAN的优化,在鉴别器中加入对未来时间的考虑,使之符合MDP的框架,提出了视频质量的新的衡量指标:t-DSSIM和t-PSNR</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/03/31/skeleton-based-action-relation/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -625,10 +558,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-03-28 18:53:14 / 修改时间：21:34:07" itemprop="dateCreated datePublished" datetime="2020-03-28T18:53:14+08:00">2020-03-28</time>
+              <time title="创建时间：2020-03-28 18:53:14" itemprop="dateCreated datePublished" datetime="2020-03-28T18:53:14+08:00">2020-03-28</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-04-24 17:15:36" itemprop="dateModified" datetime="2020-04-24T17:15:36+08:00">2020-04-24</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -657,28 +596,14 @@
 <p>encoder output：A-links</p>
 <p>decoder input: A-links &amp; 当前帧的关节点坐标</p>
 <p>decoder output:下一帧的关节点坐标</p>
-<h2 id="formula"><a href="#formula" class="headerlink" title="formula"></a>formula</h2><h3 id="encoder"><a href="#encoder" class="headerlink" title="encoder"></a>encoder</h3><p><img src="/2020/03/28/AS-GCN%E7%9A%84AIM%E6%A8%A1%E5%9D%97%E8%A7%A3%E8%AF%BB/2.png" alt="aim"></p>
-<p>C个A-link类型，n个关节点，A_i,j,c表示第i个和第j个关节点具备c类A-link类型的概率。上式的A即A-links.</p>
-<p>输入x_i = vec(X_i,:,:)表示第i个关节点在所有帧上的坐标串联起来的特征。通过坐标得到link特征再得到link类型。为了有效更新link特征，这里涉及两种特征表示，一对关节点之间的特征Q_i,j（link特征）和一个关节点的单独特征p_i（joint特征），他们通过如下两个公式交替更新：</p>
-<p><img src="/2020/03/28/AS-GCN%E7%9A%84AIM%E6%A8%A1%E5%9D%97%E8%A7%A3%E8%AF%BB/3.png" alt="aim"></p>
-<p><img src="/2020/03/28/AS-GCN%E7%9A%84AIM%E6%A8%A1%E5%9D%97%E8%A7%A3%E8%AF%BB/4.png" alt="aim"></p>
-<p>f()代表多层感知机，F()是聚合link特征得到关节点特征。圈加表示级联</p>
-<p>经过k步，encoder输出如下：</p>
-<p><img src="/2020/03/28/AS-GCN%E7%9A%84AIM%E6%A8%A1%E5%9D%97%E8%A7%A3%E8%AF%BB/5.png" alt="aim"></p>
-<p>r是符合Gumbel(0,1)分布的独立同分布的随机数，分子t用来控制A的离散程度。</p>
-<h3 id="decoder"><a href="#decoder" class="headerlink" title="decoder"></a>decoder</h3><p>输入前面t个时刻的关节点坐标，和A-link矩阵，输出t+1时刻的关节点坐标，如下式所示：</p>
-<p><img src="/2020/03/28/AS-GCN%E7%9A%84AIM%E6%A8%A1%E5%9D%97%E8%A7%A3%E8%AF%BB/6.png" alt="aim"></p>
-<p>这里X_t代表t时刻的所有3D关节点坐标。</p>
-<p>decoder可用如下四个公式描述：</p>
-<p><img src="/2020/03/28/AS-GCN%E7%9A%84AIM%E6%A8%A1%E5%9D%97%E8%A7%A3%E8%AF%BB/8.png" alt="aim"></p>
-<p>decoder的基本思路是从i，j关节点之间的A-link分布A_i,j,:中抽取出关节对特征Q_i,j，然后聚合得到关节点特征p_i(和编码器的p与Q的更新方式相同)，将关节点特征通过GRU得到下一时刻隐藏状态，再将此隐藏状态通过一个多层感知机输出得到一个坐标u，预测的关节点坐标从均值为u的高斯分布中得到：</p>
-<p><img src="/2020/03/28/AS-GCN%E7%9A%84AIM%E6%A8%A1%E5%9D%97%E8%A7%A3%E8%AF%BB/7.png" alt="aim"></p>
-<h3 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h3><p><img src="/2020/03/28/AS-GCN%E7%9A%84AIM%E6%A8%A1%E5%9D%97%E8%A7%A3%E8%AF%BB/9.png" alt="aim"></p>
-<p>其中A(0):,:,c是“ghost link”其概率是独立设定的，不参与更新，目的是使Alink 更稀疏，因为作者观察到稀疏的A具有更好的效果（直觉上的原因可能是太多的链接会捕获无用的依赖关系，从而混淆动作模式学习）</p>
-<h3 id="AGC"><a href="#AGC" class="headerlink" title="AGC"></a>AGC</h3><p>得到推断的A-links后，使用^A(c)_act作为图卷积核.<img src="/2020/03/28/AS-GCN%E7%9A%84AIM%E6%A8%A1%E5%9D%97%E8%A7%A3%E8%AF%BB/11.png" alt="aim">)定义为<img src="/2020/03/28/AS-GCN%E7%9A%84AIM%E6%A8%A1%E5%9D%97%E8%A7%A3%E8%AF%BB/12.png" alt="aim"></p>
-<p>动作图卷积AGC可用下式描述：</p>
-<p><img src="/2020/03/28/AS-GCN%E7%9A%84AIM%E6%A8%A1%E5%9D%97%E8%A7%A3%E8%AF%BB/13.png" alt="aim"></p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/03/28/AS-GCN%E7%9A%84AIM%E6%A8%A1%E5%9D%97%E8%A7%A3%E8%AF%BB/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -728,7 +653,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-03-23 22:36:55" itemprop="dateModified" datetime="2020-03-23T22:36:55+08:00">2020-03-23</time>
+                <time title="修改时间：2020-04-24 17:16:20" itemprop="dateModified" datetime="2020-04-24T17:16:20+08:00">2020-04-24</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -756,48 +681,14 @@
           <h2 id="Bayesian-Graph-Convolution-LSTM-for-Skeleton-Based-Action-Recognition"><a href="#Bayesian-Graph-Convolution-LSTM-for-Skeleton-Based-Action-Recognition" class="headerlink" title="Bayesian Graph Convolution LSTM for Skeleton Based Action Recognition"></a>Bayesian Graph Convolution LSTM for Skeleton Based Action Recognition</h2><p>ICCV2019 的文章</p>
 <p>利用贝叶斯网络提高模型对同一动作不同姿态的适应性</p>
 <p><img src="/2020/03/19/%E5%8A%A8%E4%BD%9C%E5%85%B3%E7%B3%BB%E8%B0%83%E7%A0%94/bayes-action.png" alt="bayes"></p>
-<h2 id="Spatial-temporal-graph-convolutional-networks-for-skeleton-based-action-recognition"><a href="#Spatial-temporal-graph-convolutional-networks-for-skeleton-based-action-recognition" class="headerlink" title="Spatial temporal graph convolutional networks for skeleton-based action recognition"></a>Spatial temporal graph convolutional networks for skeleton-based action recognition</h2><p>AAAI 2018</p>
-<p>ST-GCN</p>
-<p><img src="/2020/03/19/%E5%8A%A8%E4%BD%9C%E5%85%B3%E7%B3%BB%E8%B0%83%E7%A0%94/st-gcn.png" alt="st-gcn"></p>
-<p>在文章中，作者提出一种卷积的思路，首先确定一个卷积中心（也就是一个关节点）：</p>
-<p>\1. 在 spatial 维度上，取与之相邻的点，作为需要参与卷积的点；</p>
-<p>\2. 在 temporal 维度上，取前后帧在相同位置的点，作为需要参与卷积的点。</p>
-<p><a href="https://github.com/yysijie/st-gcn" target="_blank" rel="noopener">https://github.com/yysijie/st-gcn</a></p>
-<h2 id="Deep-Progressive-Reinforcement-Learning-for-Skeleton-based-Action-Recognition"><a href="#Deep-Progressive-Reinforcement-Learning-for-Skeleton-based-Action-Recognition" class="headerlink" title="Deep Progressive Reinforcement Learning for Skeleton-based Action Recognition"></a>Deep Progressive Reinforcement Learning for Skeleton-based Action Recognition</h2><p> CVPR 2018  </p>
-<p>DPRL+GCNN</p>
-<p><img src="/2020/03/19/%E5%8A%A8%E4%BD%9C%E5%85%B3%E7%B3%BB%E8%B0%83%E7%A0%94/dprl+gcnn.png" alt="DPRL+GCNN"></p>
-<p> 作者提出了一种取关键帧的方法，类似于视频压缩中的取关键帧。因为在骨架序列中前后帧的信息可能会比较冗余，所以只需要选取序列中比较有代表性的关键帧，就可以进行动作的分类识别。所以在 GCNN 之前，作者加入了一个 FDNe t 用来提取关键帧。作者实验证明，运用了取关键帧的方法，能够增加识别的准确率。 </p>
-<h2 id="Graph-Edge-Convolutional-Neural-Networks-for-Skeleton-Based-Action-Recognition"><a href="#Graph-Edge-Convolutional-Neural-Networks-for-Skeleton-Based-Action-Recognition" class="headerlink" title="Graph Edge Convolutional Neural Networks for Skeleton Based Action Recognition"></a>Graph Edge Convolutional Neural Networks for Skeleton Based Action Recognition</h2><p>IEEE 2018</p>
-<p>GEGCN</p>
-<p> 在文章中，作者提出除了给图中的点做卷积之外，还可以给图中的边做卷积，这就是所说的 Graph edge convolution, 卷积方式如下图所示 </p>
-<p><img src="/2020/03/19/%E5%8A%A8%E4%BD%9C%E5%85%B3%E7%B3%BB%E8%B0%83%E7%A0%94/GEGCN.png" alt="GEGCN"></p>
-<h2 id="Optimized-Skeleton-based-Action-Recognition-via-Sparsified-Graph-Regression"><a href="#Optimized-Skeleton-based-Action-Recognition-via-Sparsified-Graph-Regression" class="headerlink" title="Optimized Skeleton-based Action Recognition via Sparsified Graph Regression"></a>Optimized Skeleton-based Action <em>Recognition</em> <em>via</em> <em>Sparsified</em> <em>Graph</em> <em>Regression</em></h2><p>SGR-GCN</p>
-<p> graph regression based GCN(GR-GCN) 网络 , GR-GCN 的作用是用来学习骨架图中关节点联系的强弱程度, 如下图所示： </p>
-<p><img src="/2020/03/19/%E5%8A%A8%E4%BD%9C%E5%85%B3%E7%B3%BB%E8%B0%83%E7%A0%94/GR-GCN.png" alt="GR_GCN"></p>
-<h2 id="Two-Stream-Adaptive-Graph-Convolutional-Networks-for-Skeleton-Based-Action-Recognition"><a href="#Two-Stream-Adaptive-Graph-Convolutional-Networks-for-Skeleton-Based-Action-Recognition" class="headerlink" title="Two-Stream Adaptive Graph Convolutional Networks for Skeleton-Based Action Recognition"></a>Two-Stream Adaptive Graph Convolutional Networks for Skeleton-Based Action Recognition</h2><p>cvpr2019</p>
-<p>后更名：Non-Local Graph Convolutional Networks for Skeleton-Based Action Recognition </p>
-<p>2s-AGCN or 2s-NLGCN</p>
-<p>  <a href="https://github.com/lshiwjx/2s-AGCN" target="_blank" rel="noopener">https://github.com/lshiwjx/2s-AGCN</a>  </p>
-<p> 采用的是 spectral-based graph convolution networks，并且也使用了双流的网络结构，一个网络处理点（joint）的信息，另一个网络处理边 (bone) 的信息: </p>
-<p><img src="/2020/03/19/%E5%8A%A8%E4%BD%9C%E5%85%B3%E7%B3%BB%E8%B0%83%E7%A0%94/s_NLGCN2.png" alt="2s-nlgcn"></p>
-<h2 id="Actional-Structural-Graph-Convolutional-Networks-for-Skeleton-based-Action-Recognition"><a href="#Actional-Structural-Graph-Convolutional-Networks-for-Skeleton-based-Action-Recognition" class="headerlink" title="Actional-Structural Graph Convolutional Networks for Skeleton-based Action Recognition"></a>Actional-Structural Graph Convolutional Networks for Skeleton-based Action Recognition</h2><p>AS-GCN</p>
-<p> <a href="https://github.com/limaosen0/AS-GCN" target="_blank" rel="noopener">https://github.com/limaosen0/AS-GCN</a>    （pytorch)</p>
-<p>CVPR 2019</p>
-<p>动作连接和结构连接：Action links &amp;  Structural links</p>
-<p>A-links捕获动作之间的潜在依赖关系；S-links表示更高阶的依存关系</p>
-<p>除了动作识别外，还可准确预测未来帧。（预测头和识别头同时训练，可以提高识别准确性）</p>
-<p>由许多AS-GCN blocks构成骨干网络——AS-GCN：提取高层语义表示，动作识别头、预测头完成具体任务。（预测头和识别头同时训练，可以提高识别准确性）</p>
-<p><img src="/2020/03/19/%E5%8A%A8%E4%BD%9C%E5%85%B3%E7%B3%BB%E8%B0%83%E7%A0%94/as-gcn.png" alt="as=gcn"></p>
-<h2 id="VERTEX-FEATURE-ENCODING-AND-HIERARCHICAL-TEMPORAL-MODELING-IN-A-SPATIAL-TEMPORAL-GRAPH-CONVOLUTIONAL-NETWORK-FOR-ACTION"><a href="#VERTEX-FEATURE-ENCODING-AND-HIERARCHICAL-TEMPORAL-MODELING-IN-A-SPATIAL-TEMPORAL-GRAPH-CONVOLUTIONAL-NETWORK-FOR-ACTION" class="headerlink" title="VERTEX FEATURE ENCODING AND HIERARCHICAL TEMPORAL MODELING IN A SPATIAL-TEMPORAL GRAPH CONVOLUTIONAL NETWORK FOR ACTION"></a>VERTEX FEATURE ENCODING AND HIERARCHICAL TEMPORAL MODELING IN A SPATIAL-TEMPORAL GRAPH CONVOLUTIONAL NETWORK FOR ACTION</h2><p>RECOGNITION<br>（时空图卷积网络中动作识别的顶点特征编码和分层时间建模）</p>
-<p>引入图顶点特征编码器（GVFE）和膨胀分层时间卷积网络（DH-TCN），对ST-GCN进行了扩展。</p>
-<ul>
-<li><p>GVFE将原骨架数据编码到新的特征空间中，DH-TCN捕获短期和长期依赖。</p>
-</li>
-<li><p>与sota对比优势主要在参数少，减少训练时间和内存。</p>
-</li>
-</ul>
-<h2 id="总结一下"><a href="#总结一下" class="headerlink" title="总结一下"></a>总结一下</h2><p>动作中的关节点关系可以分为时间上的和空间上的，物理连接的和语义连接的。针对分类任务使用GCN已经可以达到较高的准确度。难点在于还原动作。希望达到如果要对一个动作进行建模，输入参数就可以可以还原动作，例如想做出拍手的动作，给定拍手的参数就可以使各个关节点协同运动形成拍手运动。涉及到的问题是该参数如何既准确表征动作的分类，还要能够形成连续的动作帧。由于动作本身具有不同的样子，例如拍手，从不同角度看样子就完全不一样，动作的幅度快慢也不一样。首先学习一个标准的动作表达方式，再泛化到更多姿态的该动作应该是一个比较容易实现的方式。例如AS-GCN+贝叶斯推断。</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/03/19/%E5%8A%A8%E4%BD%9C%E5%85%B3%E7%B3%BB%E8%B0%83%E7%A0%94/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 

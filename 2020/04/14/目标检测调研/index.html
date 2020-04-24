@@ -51,19 +51,19 @@
   };
 </script>
 
-  <meta name="description" content="任务    目标检测即找出图像中所有感兴趣的物体，包含物体定位和物体分类两个子任务，同时确定物体的类别和位置。   传统方法  ​        传统目标检测的方法一般分为三个阶段:首先在给定的图像上选择一些候选的区域，然 后对这些区域提取特征，最后使用训练的分类器进行分类。   区域选择：定位目标， 最初采用滑动窗口进行遍历，需要不同尺度和长宽比的窗口，时间复杂度太高，冗余窗口过多。 特征提取">
+  <meta name="description" content="任务    目标检测即找出图像中所有感兴趣的物体，包含物体定位和物体分类两个子任务，同时确定物体的类别和位置。">
 <meta name="keywords" content="目标检测">
 <meta property="og:type" content="article">
 <meta property="og:title" content="目标检测调研">
 <meta property="og:url" content="https:&#x2F;&#x2F;zhouhongh.github.io&#x2F;2020&#x2F;04&#x2F;14&#x2F;%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E8%B0%83%E7%A0%94&#x2F;index.html">
 <meta property="og:site_name" content="zhouhongh&#39;s blog">
-<meta property="og:description" content="任务    目标检测即找出图像中所有感兴趣的物体，包含物体定位和物体分类两个子任务，同时确定物体的类别和位置。   传统方法  ​        传统目标检测的方法一般分为三个阶段:首先在给定的图像上选择一些候选的区域，然 后对这些区域提取特征，最后使用训练的分类器进行分类。   区域选择：定位目标， 最初采用滑动窗口进行遍历，需要不同尺度和长宽比的窗口，时间复杂度太高，冗余窗口过多。 特征提取">
+<meta property="og:description" content="任务    目标检测即找出图像中所有感兴趣的物体，包含物体定位和物体分类两个子任务，同时确定物体的类别和位置。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https:&#x2F;&#x2F;zhouhongh.github.io&#x2F;2020&#x2F;04&#x2F;14&#x2F;%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E8%B0%83%E7%A0%94&#x2F;1.jpg">
 <meta property="og:image" content="https:&#x2F;&#x2F;zhouhongh.github.io&#x2F;2020&#x2F;04&#x2F;14&#x2F;%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E8%B0%83%E7%A0%94&#x2F;2.jpg">
 <meta property="og:image" content="https:&#x2F;&#x2F;zhouhongh.github.io&#x2F;2020&#x2F;04&#x2F;14&#x2F;%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E8%B0%83%E7%A0%94&#x2F;%E5%87%86%E7%A1%AE%E7%8E%87.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;zhouhongh.github.io&#x2F;2020&#x2F;04&#x2F;14&#x2F;%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E8%B0%83%E7%A0%94&#x2F;%E6%97%B6%E9%97%B4.png">
-<meta property="og:updated_time" content="2020-04-14T05:33:10.605Z">
+<meta property="og:updated_time" content="2020-04-24T09:15:17.552Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;zhouhongh.github.io&#x2F;2020&#x2F;04&#x2F;14&#x2F;%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E8%B0%83%E7%A0%94&#x2F;1.jpg">
 
@@ -218,10 +218,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-04-14 10:24:40 / 修改时间：13:33:10" itemprop="dateCreated datePublished" datetime="2020-04-14T10:24:40+08:00">2020-04-14</time>
+              <time title="创建时间：2020-04-14 10:24:40" itemprop="dateCreated datePublished" datetime="2020-04-14T10:24:40+08:00">2020-04-14</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-04-24 17:15:17" itemprop="dateModified" datetime="2020-04-24T17:15:17+08:00">2020-04-24</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -250,6 +256,8 @@
 </ol>
 <p><img src="/2020/04/14/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E8%B0%83%E7%A0%94/1.jpg" alt="task"></p>
 <p> 目标检测即找出图像中所有感兴趣的物体，包含物体定位和物体分类两个子任务，同时确定物体的类别和位置。 </p>
+<a id="more"></a>
+
 <ol start="2">
 <li>传统方法</li>
 </ol>
